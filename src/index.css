@@ -82,26 +82,28 @@ html, body {
 }
 
 .header-top-bar {
-  position: absolute;
-  top: -4px;
-  right: 0;
+  position: fixed;
+  top: 20px;
+  right: 24px;
   display: flex;
-  gap: 8px;
-  z-index: 10;
+  gap: 10px;
+  z-index: 1000;
 }
 
 .header-icon-btn {
   background: var(--btn-icon-bg);
   color: var(--text-secondary);
   border: 1px solid var(--btn-icon-border);
-  width: 34px;
-  height: 34px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   transition: all 0.2s ease;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .header-icon-btn:hover {
@@ -116,7 +118,7 @@ html, body {
 
 /* Avatar */
 .avatar-wrapper {
-  margin-top: 12px;
+  margin-top: 0;
   margin-bottom: 14px;
 }
 
@@ -334,6 +336,17 @@ html, body {
 
 /* Mobile Adjustments */
 @media (max-width: 480px) {
+  .header-top-bar {
+    top: 14px;
+    right: 16px;
+    gap: 8px;
+  }
+
+  .header-icon-btn {
+    width: 32px;
+    height: 32px;
+  }
+
   .app-layout {
     padding: 32px 14px 44px;
   }
