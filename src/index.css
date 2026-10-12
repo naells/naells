@@ -227,12 +227,23 @@ html, body {
 /* Pill Icon */
 .pill-icon-wrapper {
   flex-shrink: 0;
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--text-primary);
+}
+
+.pill-icon-img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  display: block;
+}
+
+[data-theme="light"] .pill-icon-img.github-icon {
+  filter: invert(1);
 }
 
 /* Pill Text */

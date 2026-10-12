@@ -30,6 +30,20 @@ export const Card = ({ item, index, onCopy }) => {
     }
   };
 
+  const renderIcon = () => {
+    if (item.icon) {
+      return (
+        <img
+          src={item.icon}
+          alt={`${item.title} icon`}
+          className={`pill-icon-img ${item.type === "github" ? "github-icon" : ""}`}
+          loading="lazy"
+        />
+      );
+    }
+    return getIcon(item.type);
+  };
+
   const handleCopy = (e) => {
     e.preventDefault();
     e.stopPropagation();
@@ -68,7 +82,7 @@ export const Card = ({ item, index, onCopy }) => {
       role="button"
       aria-label={`Open ${item.title}`}
     >
-      <div className="pill-icon-wrapper">{getIcon(item.type)}</div>
+      <div className="pill-icon-wrapper">{renderIcon()}</div>
 
       <div className="pill-text-wrapper">
         <span className="pill-title">{item.title}</span>
