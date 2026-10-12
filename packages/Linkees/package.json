@@ -1,0 +1,108 @@
+{
+  "name": "linkees",
+  "version": "1.0.5",
+  "description": "A beautiful Single Page component made with React to display all your important social links for your followers (Alternative to linktr.ee).",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/index.js",
+    "dist/index.esm.js",
+    "dist/index.d.ts",
+    "dist/style.css",
+    "dist/components/",
+    "dist/types/",
+    "dist/utils/",
+    "dist/*.LICENSE.txt",
+    "README.md"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.esm.js",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.esm.js"
+    },
+    "./style.css": "./dist/style.css",
+    "./dist/style.css": "./dist/style.css"
+  },
+  "sideEffects": [
+    "*.css"
+  ],
+  "scripts": {
+    "clean": "rimraf dist",
+    "build": "npm run clean && npm run build:types && npm run build:js && npm run build:cleanup",
+    "build:types": "tsc --emitDeclarationOnly",
+    "build:js": "webpack --mode production",
+    "build:cleanup": "rimraf dist/style.js dist/style.js.LICENSE.txt",
+    "build:dev": "webpack --mode development",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "prettier-fix": "pretty-quick --staged",
+    "typecheck": "tsc --noEmit",
+    "release": "scripts\\release.bat"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/heysagnik/Linkees.git"
+  },
+  "keywords": [
+    "linktr.ee",
+    "linktree",
+    "react",
+    "component",
+    "social-links",
+    "bio-link",
+    "typescript"
+  ],
+  "author": "Sagnik Sahoo <sahoosagnik1@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/heysagnik/Linkees/issues"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run prettier-fix && npm run typecheck"
+    }
+  },
+  "homepage": "https://github.com/heysagnik/Linkees#readme",
+  "devDependencies": {
+    "@babel/core": "^7.28.0",
+    "@babel/preset-env": "^7.28.0",
+    "@babel/preset-react": "^7.27.1",
+    "@babel/preset-typescript": "^7.27.1",
+    "@testing-library/jest-dom": "^6.6.4",
+    "@testing-library/react": "^16.3.0",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^18.7.14",
+    "@types/react": "^19.1.9",
+    "babel-loader": "^10.0.0",
+    "css-loader": "^7.1.2",
+    "husky": "^4.2.3",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^30.0.5",
+    "mini-css-extract-plugin": "^2.9.2",
+    "prettier": "^2.5.1",
+    "pretty-quick": "^3.1.3",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "rimraf": "^6.0.1",
+    "style-loader": "^4.0.0",
+    "ts-jest": "^29.4.0",
+    "ts-loader": "^9.4.2",
+    "typescript": "^5.8.3",
+    "webpack": "^5.76.3",
+    "webpack-cli": "^6.0.1"
+  },
+  "dependencies": {
+    "@types/react-dom": "^19.1.7",
+    "framer-motion": "^12.23.11",
+    "jest-environment-jsdom": "^30.0.5",
+    "url-loader": "^4.1.1"
+  },
+  "peerDependencies": {
+    "react": "^16.0.0-0 || ^17.0.0-0 || ^18.0.0-0 || ^19.0.0-0",
+    "react-dom": "^16.0.0-0 || ^17.0.0-0 || ^18.0.0-0 || ^19.0.0-0"
+  }
+}
