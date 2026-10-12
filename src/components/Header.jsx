@@ -1,9 +1,7 @@
-import React, { useState } from "react";
-import { SunIcon, MoonIcon, ShareIcon, VerifiedIcon } from "./Icons";
+import React from "react";
+import { SunIcon, MoonIcon, ShareIcon } from "./Icons";
 
 export const Header = ({ profile, theme, onToggleTheme, onShare }) => {
-  const [imgError, setImgError] = useState(false);
-
   return (
     <header className="profile-header">
       <div className="header-controls">
@@ -12,7 +10,7 @@ export const Header = ({ profile, theme, onToggleTheme, onShare }) => {
           className="control-btn"
           onClick={onShare}
           aria-label="Share profile"
-          title="Share profile"
+          title="Share"
         >
           <ShareIcon size={18} />
         </button>
@@ -29,41 +27,15 @@ export const Header = ({ profile, theme, onToggleTheme, onShare }) => {
       </div>
 
       <div className="avatar-wrapper">
-        <div className="avatar-glow"></div>
-        <div className="avatar-container">
-          {!imgError ? (
-            <img
-              src={profile.avatar}
-              alt={profile.name}
-              className="avatar-img"
-              onError={() => setImgError(true)}
-              loading="eager"
-            />
-          ) : (
-            <div className="avatar-fallback">{profile.avatarFallback}</div>
-          )}
-        </div>
-        {profile.status?.online && (
-          <div className="status-badge" title={profile.status.text || "Online"}>
-            <span className="status-pulse"></span>
-            <span className="status-dot"></span>
-          </div>
-        )}
+        <img
+          src={profile.avatar}
+          alt={profile.name}
+          className="avatar-img"
+          loading="eager"
+        />
       </div>
 
-      <div className="profile-info">
-        <div className="name-wrapper">
-          <h1 className="profile-name">{profile.name}</h1>
-          {profile.verified && (
-            <span className="verified-badge" title="Verified Creator">
-              <VerifiedIcon size={18} className="verified-icon" />
-            </span>
-          )}
-        </div>
-
-        {profile.tagline && <p className="profile-tagline">{profile.tagline}</p>}
-        {profile.bio && <p className="profile-bio">{profile.bio}</p>}
-      </div>
+      <h1 className="profile-name">{profile.name}</h1>
     </header>
   );
 };

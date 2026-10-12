@@ -1,6 +1,24 @@
 import React from "react";
 
-export const GithubIcon = ({ size = 24, className = "" }) => (
+export const UserIcon = ({ size = 20, className = "" }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+    aria-hidden="true"
+  >
+    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+    <circle cx="12" cy="7" r="4" />
+  </svg>
+);
+
+export const GithubIcon = ({ size = 20, className = "" }) => (
   <svg
     width={size}
     height={size}
@@ -17,7 +35,7 @@ export const GithubIcon = ({ size = 24, className = "" }) => (
   </svg>
 );
 
-export const DiscordIcon = ({ size = 24, className = "" }) => (
+export const DiscordIcon = ({ size = 20, className = "" }) => (
   <svg
     width={size}
     height={size}
@@ -30,7 +48,7 @@ export const DiscordIcon = ({ size = 24, className = "" }) => (
   </svg>
 );
 
-export const DiscordServerIcon = ({ size = 24, className = "" }) => (
+export const TiktokIcon = ({ size = 20, className = "" }) => (
   <svg
     width={size}
     height={size}
@@ -39,24 +57,11 @@ export const DiscordServerIcon = ({ size = 24, className = "" }) => (
     className={className}
     aria-hidden="true"
   >
-    <path d="M12 2L3 6v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V6l-9-4zm4.8 12.3c-.3.4-.6.8-.9 1.2-.02.03-.06.04-.09.02a9.6 9.6 0 0 1-1.3-.6.05.05 0 0 0-.05.01c-.5.3-1.1.5-1.7.6-.2 0-.4 0-.6-.02a6.4 6.4 0 0 1-1.7-.58.05.05 0 0 0-.05-.01c-.4.2-.9.4-1.3.6-.03.02-.07 0-.09-.02-.3-.4-.6-.8-.9-1.2a.05.05 0 0 1 .02-.07c.3-.2.6-.4.9-.6.03-.02.04-.06.02-.09a5.9 5.9 0 0 1-.3-1.5c0-.03.02-.06.05-.07.4-.1.8-.2 1.2-.2.03 0 .06.02.08.05.2.3.4.6.6.9.02.03.05.04.08.03.8-.2 1.6-.2 2.4 0 .03.01.06 0 .08-.03.2-.3.4-.6.6-.9.02-.03.05-.05.08-.05.4.1.8.2 1.2.2.03.01.05.04.05.07a5.9 5.9 0 0 1-.3 1.5c-.02.03-.01.07.02.09.3.2.6.4.9.6.03.03.04.06.02.07zM10.2 11.5c-.5 0-.9.4-.9.9s.4.9.9.9.9-.4.9-.9-.4-.9-.9-.9zm3.6 0c-.5 0-.9.4-.9.9s.4.9.9.9.9-.4.9-.9-.4-.9-.9-.9z" />
+    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64c.29 0 .58.04.86.12V9.42a6.29 6.29 0 0 0-.86-.06 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V9.06a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.49z" />
   </svg>
 );
 
-export const TiktokIcon = ({ size = 24, className = "" }) => (
-  <svg
-    width={size}
-    height={size}
-    viewBox="0 0 24 24"
-    fill="currentColor"
-    className={className}
-    aria-hidden="true"
-  >
-    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64c.29 0 .58.04.86.12V9.42a6.29 6.29 0 0 0-.86-.06 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V9.06a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.49z" />
-  </svg>
-);
-
-export const SunIcon = ({ size = 20, className = "" }) => (
+export const SunIcon = ({ size = 18, className = "" }) => (
   <svg
     width={size}
     height={size}
@@ -81,7 +86,7 @@ export const SunIcon = ({ size = 20, className = "" }) => (
   </svg>
 );
 
-export const MoonIcon = ({ size = 20, className = "" }) => (
+export const MoonIcon = ({ size = 18, className = "" }) => (
   <svg
     width={size}
     height={size}
@@ -98,7 +103,7 @@ export const MoonIcon = ({ size = 20, className = "" }) => (
   </svg>
 );
 
-export const ExternalLinkIcon = ({ size = 18, className = "" }) => (
+export const ExternalLinkIcon = ({ size = 16, className = "" }) => (
   <svg
     width={size}
     height={size}
@@ -117,7 +122,7 @@ export const ExternalLinkIcon = ({ size = 18, className = "" }) => (
   </svg>
 );
 
-export const CopyIcon = ({ size = 18, className = "" }) => (
+export const CopyIcon = ({ size = 16, className = "" }) => (
   <svg
     width={size}
     height={size}
@@ -135,7 +140,7 @@ export const CopyIcon = ({ size = 18, className = "" }) => (
   </svg>
 );
 
-export const CheckIcon = ({ size = 18, className = "" }) => (
+export const CheckIcon = ({ size = 16, className = "" }) => (
   <svg
     width={size}
     height={size}
@@ -170,22 +175,5 @@ export const ShareIcon = ({ size = 18, className = "" }) => (
     <circle cx="18" cy="19" r="3" />
     <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" />
     <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
-  </svg>
-);
-
-export const VerifiedIcon = ({ size = 18, className = "" }) => (
-  <svg
-    width={size}
-    height={size}
-    viewBox="0 0 24 24"
-    fill="currentColor"
-    className={className}
-    aria-hidden="true"
-  >
-    <path d="M12 2L14.7 4.2L18.1 4.5L19.3 7.8L22.2 9.7L21.7 13.1L23.2 16.2L20.5 18.3L19.9 21.7L16.5 22.1L14.3 24.8L11.5 23.8L8.7 24.8L6.5 22.1L3.1 21.7L2.5 18.3L-0.2 16.2L1.3 13.1L0.8 9.7L3.7 7.8L4.9 4.5L8.3 4.2L11 2h1z" />
-    <path
-      d="M10 15.5l-3.5-3.5 1.4-1.4 2.1 2.1 5.6-5.6 1.4 1.4L10 15.5z"
-      fill="#ffffff"
-    />
   </svg>
 );

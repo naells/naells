@@ -27,11 +27,11 @@ function App() {
     setToastVisible(true);
     setTimeout(() => {
       setToastVisible(false);
-    }, 2500);
+    }, 2000);
   };
 
   const handleCopy = (value) => {
-    showToast(`Copied "${value}" to clipboard!`);
+    showToast(`Copied ${value}`);
   };
 
   const handleShare = async () => {
@@ -39,29 +39,23 @@ function App() {
     if (navigator.share) {
       try {
         await navigator.share({
-          title: "Naell | Links & Communities",
-          text: "Check out Naell's official links and communities!",
+          title: "Naell",
           url: shareUrl,
         });
       } catch (err) {
         if (err.name !== "AbortError") {
           navigator.clipboard.writeText(shareUrl);
-          showToast("Profile link copied to clipboard!");
+          showToast("Link copied");
         }
       }
     } else {
       navigator.clipboard.writeText(shareUrl);
-      showToast("Profile link copied to clipboard!");
+      showToast("Link copied");
     }
   };
 
   return (
     <div className="app-wrapper">
-      {/* Dynamic Background Effects */}
-      <div className="bg-glow bg-glow-1"></div>
-      <div className="bg-glow bg-glow-2"></div>
-      <div className="bg-grid-pattern"></div>
-
       <div className="app-container">
         <Header
           profile={profileConfig}

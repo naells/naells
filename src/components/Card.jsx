@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import {
   GithubIcon,
   DiscordIcon,
-  DiscordServerIcon,
+  UserIcon,
   TiktokIcon,
   ExternalLinkIcon,
   CopyIcon,
@@ -14,16 +14,16 @@ export const Card = ({ item, index, onCopy }) => {
 
   const getIcon = (type) => {
     switch (type) {
-      case "github":
-        return <GithubIcon size={24} className="icon-github" />;
+      case "user":
+        return <UserIcon size={20} />;
       case "discord":
-        return <DiscordIcon size={24} className="icon-discord" />;
-      case "discord-server":
-        return <DiscordServerIcon size={24} className="icon-discord-server" />;
+        return <DiscordIcon size={20} />;
+      case "github":
+        return <GithubIcon size={20} />;
       case "tiktok":
-        return <TiktokIcon size={24} className="icon-tiktok" />;
+        return <TiktokIcon size={20} />;
       default:
-        return <ExternalLinkIcon size={24} />;
+        return <ExternalLinkIcon size={20} />;
     }
   };
 
@@ -39,12 +39,6 @@ export const Card = ({ item, index, onCopy }) => {
   };
 
   const handleCardClick = (e) => {
-    // If it's pure copy action (or user clicked a card with copyValue)
-    if (item.copyValue && !item.url) {
-      handleCopy(e);
-      return;
-    }
-    // If it has a url, open in new tab
     if (item.url) {
       window.open(item.url, "_blank", "noopener,noreferrer");
     }
@@ -59,26 +53,20 @@ export const Card = ({ item, index, onCopy }) => {
 
   return (
     <div
-      className={`link-card card-${item.type} ${item.featured ? "featured" : ""}`}
-      style={{ animationDelay: `${index * 80}ms` }}
+      className="link-card"
       onClick={handleCardClick}
       onKeyDown={handleKeyDown}
       role="button"
       tabIndex={0}
       aria-label={`Open ${item.title}`}
     >
-      <div className="card-shine"></div>
-
       <div className="card-icon-container">
-        <div className="card-icon-bg">{getIcon(item.type)}</div>
+        <div className="card-icon">{getIcon(item.type)}</div>
       </div>
 
       <div className="card-content">
-        <div className="card-title-row">
-          <h2 className="card-title">{item.title}</h2>
-          {item.featured && <span className="featured-pill">Featured</span>}
-        </div>
-        <p className="card-subtitle">{item.subtitle}</p>
+        <h2 className="card-title">{item.title}</h2>
+        {item.subtitle && <p className="card-subtitle">{item.subtitle}</p>}
       </div>
 
       <div className="card-actions">
@@ -91,13 +79,11 @@ export const Card = ({ item, index, onCopy }) => {
             aria-label={`Copy ${item.copyValue}`}
           >
             {copied ? <CheckIcon size={16} /> : <CopyIcon size={16} />}
-            <span className="btn-label">{copied ? "Copied" : item.badge || "Copy"}</span>
           </button>
         )}
 
         {item.url && !item.copyValue && (
           <span className="action-btn arrow-btn" title="Open link">
-            <span className="btn-label">{item.badge}</span>
             <ExternalLinkIcon size={16} />
           </span>
         )}
