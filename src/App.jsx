@@ -7,7 +7,7 @@ import { Toast } from "./components/Toast";
 
 function App() {
   const [theme, setTheme] = useState(() => {
-    const saved = localStorage.getItem("linkees-theme");
+    const saved = localStorage.getItem("naell-theme");
     return saved ? saved : "dark";
   });
   const [toastMessage, setToastMessage] = useState("");
@@ -16,7 +16,7 @@ function App() {
   useEffect(() => {
     document.body.setAttribute("data-theme", theme);
     document.documentElement.setAttribute("data-theme", theme);
-    localStorage.setItem("linkees-theme", theme);
+    localStorage.setItem("naell-theme", theme);
   }, [theme]);
 
   const toggleTheme = () => {
@@ -56,26 +56,29 @@ function App() {
   };
 
   return (
-    <div className="App" data-theme={theme}>
-      <Header
-        profile={profileConfig}
-        theme={theme}
-        onToggleTheme={toggleTheme}
-        onShare={handleShare}
-      />
+    <div className="app-layout" data-theme={theme}>
+      <div className="mobile-frame">
+        <Header
+          profile={profileConfig}
+          theme={theme}
+          onToggleTheme={toggleTheme}
+          onShare={handleShare}
+        />
 
-      <main className="container row">
-        {profileConfig.socialLinks.map((item, index) => (
-          <Card
-            key={item.id}
-            item={item}
-            index={index}
-            onCopy={handleCopy}
-          />
-        ))}
-      </main>
+        <main className="pills-container">
+          {profileConfig.socialLinks.map((item, index) => (
+            <Card
+              key={item.id}
+              item={item}
+              index={index}
+              onCopy={handleCopy}
+            />
+          ))}
+        </main>
 
-      <Footer />
+        <Footer />
+      </div>
+
       <Toast message={toastMessage} visible={toastVisible} />
     </div>
   );

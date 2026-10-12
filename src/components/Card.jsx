@@ -1,8 +1,31 @@
 import React, { useState } from "react";
-import { CopyIcon, CheckIcon, ExternalLinkIcon } from "./Icons";
+import {
+  GithubIcon,
+  DiscordIcon,
+  UserIcon,
+  TiktokIcon,
+  CopyIcon,
+  CheckIcon,
+  ExternalLinkIcon,
+} from "./Icons";
 
 export const Card = ({ item, index, onCopy }) => {
   const [copied, setCopied] = useState(false);
+
+  const getIcon = (type) => {
+    switch (type) {
+      case "user":
+        return <UserIcon size={18} />;
+      case "discord":
+        return <DiscordIcon size={18} />;
+      case "github":
+        return <GithubIcon size={18} />;
+      case "tiktok":
+        return <TiktokIcon size={18} />;
+      default:
+        return <ExternalLinkIcon size={18} />;
+    }
+  };
 
   const handleCopy = (e) => {
     e.preventDefault();
@@ -15,7 +38,11 @@ export const Card = ({ item, index, onCopy }) => {
     }
   };
 
-  const handleClick = () => {
+  const handleClick = (e) => {
+    if (item.copyValue && !item.url) {
+      handleCopy(e);
+      return;
+    }
     if (item.url) {
       window.open(item.url, "_blank", "noopener,noreferrer");
     }
@@ -24,50 +51,43 @@ export const Card = ({ item, index, onCopy }) => {
   const handleKeyDown = (e) => {
     if (e.key === "Enter" || e.key === " ") {
       e.preventDefault();
-      handleClick();
+      handleClick(e);
     }
   };
 
   return (
     <div
-      className="Card"
-      style={{ animationDelay: `${index * 0.09}s` }}
+      className="pill-card"
+      style={{ animationDelay: `${index * 0.08}s` }}
       onClick={handleClick}
       onKeyDown={handleKeyDown}
       tabIndex={0}
       role="button"
-      aria-label={`Visit ${item.title}`}
+      aria-label={`Open ${item.title}`}
     >
-      <div className="cover-wrapper">
-        <img
-          src={item.cover}
-          className={`cover cover-${item.coverFit || "cover"}`}
-          alt={`${item.title} cover`}
-          loading="lazy"
-        />
+      <div className="pill-icon-wrapper">{getIcon(item.type)}</div>
+
+      <div className="pill-text-wrapper">
+        <span className="pill-title">{item.title}</span>
+        {item.subtitle && <span className="pill-subtitle">{item.subtitle}</span>}
       </div>
 
-      <div className="data">
-        <div className="data-row">
-          <h2>{item.title}</h2>
-
-          {item.copyValue ? (
-            <button
-              type="button"
-              className={`card-copy-btn ${copied ? "copied" : ""}`}
-              onClick={handleCopy}
-              title={`Copy ${item.copyValue}`}
-              aria-label={`Copy ${item.copyValue}`}
-            >
-              {copied ? <CheckIcon size={14} /> : <CopyIcon size={14} />}
-            </button>
-          ) : (
-            <span className="card-external-icon">
-              <ExternalLinkIcon size={14} />
-            </span>
-          )}
-        </div>
-        <p>{item.subtitle}</p>
+      <div className="pill-action-wrapper">
+        {item.copyValue ? (
+          <button
+            type="button"
+            className={`pill-action-btn ${copied ? "copied" : ""}`}
+            onClick={handleCopy}
+            title={`Copy ${item.copyValue}`}
+            aria-label={`Copy ${item.copyValue}`}
+          >
+            {copied ? <CheckIcon size={14} /> : <CopyIcon size={14} />}
+          </button>
+        ) : (
+          <span className="pill-action-icon">
+            <ExternalLinkIcon size={14} />
+          </span>
+        )}
       </div>
     </div>
   );

@@ -5,15 +5,40 @@ export const Header = ({ profile, theme, onToggleTheme, onShare }) => {
   const isDark = theme === "dark";
 
   return (
-    <div className="Header container">
-      <div className="Header__inner">
+    <header className="profile-header">
+      <div className="header-top-bar">
+        <button
+          type="button"
+          className="header-icon-btn"
+          onClick={onShare}
+          aria-label="Share profile"
+          title="Share"
+        >
+          <ShareIcon size={16} />
+        </button>
+
+        <button
+          type="button"
+          className="header-icon-btn"
+          onClick={onToggleTheme}
+          aria-label={`Switch to ${isDark ? "light" : "dark"} mode`}
+          title={`Switch to ${isDark ? "light" : "dark"} mode`}
+        >
+          {isDark ? <SunIcon size={16} /> : <MoonIcon size={16} />}
+        </button>
+      </div>
+
+      <div className="avatar-wrapper">
         <img
           src={profile.avatar}
           alt={profile.name}
           className="header-avatar"
           loading="eager"
         />
-        <h2>{profile.name}</h2>
+      </div>
+
+      <div className="profile-title-row">
+        <h1 className="profile-name">{profile.name}</h1>
         {profile.verifiedBadge && (
           <img
             src={profile.verifiedBadge}
@@ -22,28 +47,6 @@ export const Header = ({ profile, theme, onToggleTheme, onShare }) => {
           />
         )}
       </div>
-
-      <div className="Header__controls">
-        <button
-          type="button"
-          className="share-button"
-          onClick={onShare}
-          aria-label="Share"
-          title="Share"
-        >
-          <ShareIcon size={16} />
-        </button>
-
-        <button
-          type="button"
-          className="switch-theme-button"
-          onClick={onToggleTheme}
-          aria-label={`Switch to ${isDark ? "light" : "dark"} theme`}
-          title={`Switch to ${isDark ? "light" : "dark"} theme`}
-        >
-          {isDark ? <SunIcon size={16} /> : <MoonIcon size={16} />}
-        </button>
-      </div>
-    </div>
+    </header>
   );
 };

@@ -1,40 +1,39 @@
 /* ==========================================================================
-   LINKEES ORIGINAL SOURCE STYLE - MONOCHROME EDITION FOR NAELL
-   (Hitam, Abu-abu Gelap, Abu-abu Netral, Putih)
+   NAELL - SLEEK MOBILE PILL LINKTREE (MATCHING REFERENCE MOCKUP)
    ========================================================================== */
 
-/* Theme Variables */
-body[data-theme="dark"],
-.App[data-theme="dark"] {
-  --font-color: #f0f0f0;
-  --subtitle-color: #8a8a8a;
-  --background-color: #0a0a0a;
-  --card-bg: #141414;
-  --card-hover-bg: #1c1c1c;
-  --card-border: #242424;
-  --card-border-hover: #3e3e3e;
-  --cover-bg: #181818;
-  --button-bg: #1c1c1c;
-  --button-color: #f0f0f0;
-  --button-border: #2e2e2e;
+:root {
+  /* Dark Mode Default - Pure Sleek Monochrome */
+  --bg-page: #0a0a0a;
+  --bg-pill: rgba(255, 255, 255, 0.05);
+  --bg-pill-hover: rgba(255, 255, 255, 0.1);
+  --border-pill: rgba(255, 255, 255, 0.08);
+  --border-pill-hover: rgba(255, 255, 255, 0.22);
+
+  --text-primary: #ffffff;
+  --text-secondary: #8e8e93;
+  --text-muted: #525252;
+
+  --btn-icon-bg: rgba(255, 255, 255, 0.06);
+  --btn-icon-border: rgba(255, 255, 255, 0.1);
 }
 
-body[data-theme="light"],
-.App[data-theme="light"] {
-  --font-color: #111111;
-  --subtitle-color: #666666;
-  --background-color: #f5f5f5;
-  --card-bg: #ffffff;
-  --card-hover-bg: #fafafa;
-  --card-border: #e2e2e2;
-  --card-border-hover: #cccccc;
-  --cover-bg: #eeeeee;
-  --button-bg: #e8e8e8;
-  --button-color: #111111;
-  --button-border: #d0d0d0;
+[data-theme="light"] {
+  --bg-page: #f5f5f7;
+  --bg-pill: #ffffff;
+  --bg-pill-hover: #fafafa;
+  --border-pill: #e5e5ea;
+  --border-pill-hover: #c7c7cc;
+
+  --text-primary: #1c1c1e;
+  --text-secondary: #636366;
+  --text-muted: #8e8e93;
+
+  --btn-icon-bg: #e5e5ea;
+  --btn-icon-border: #d1d1d6;
 }
 
-/* Base Styles */
+/* Base */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -43,59 +42,107 @@ body[data-theme="light"],
 
 html, body {
   min-height: 100%;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  background-color: var(--background-color);
-  color: var(--font-color);
-  transition: background-color 200ms ease-in-out, color 200ms ease-in-out;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  transition: background-color 0.2s ease, color 0.2s ease;
+  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
 
-.App {
+/* App Layout */
+.app-layout {
+  position: relative;
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 16px 50px;
 }
 
-/* Container Grid */
-.container {
+/* Mobile Frame (Centered, Narrow Column) */
+.mobile-frame {
   position: relative;
   width: 100%;
-  max-width: 720px;
-  margin: 0 auto;
-  padding: 0 20px;
-  box-sizing: border-box;
+  max-width: 440px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* Header */
-.Header {
-  padding: 20px 20px 4px;
+.profile-header {
+  position: relative;
+  width: 100%;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
+  text-align: center;
+  margin-bottom: 28px;
 }
 
-.Header__inner {
+.header-top-bar {
+  position: absolute;
+  top: -4px;
+  right: 0;
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+
+.header-icon-btn {
+  background: var(--btn-icon-bg);
+  color: var(--text-secondary);
+  border: 1px solid var(--btn-icon-border);
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
-  gap: 12px;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.header-icon-btn:hover {
+  color: var(--text-primary);
+  border-color: var(--border-pill-hover);
+  transform: scale(1.05);
+}
+
+.header-icon-btn:active {
+  transform: scale(0.95);
+}
+
+/* Avatar */
+.avatar-wrapper {
+  margin-top: 12px;
+  margin-bottom: 14px;
 }
 
 .header-avatar {
-  width: 44px;
-  height: 44px;
+  width: 82px;
+  height: 82px;
   border-radius: 50%;
   object-fit: cover;
-  flex-shrink: 0;
-  border: 1px solid var(--card-border);
+  border: 1px solid var(--border-pill);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  display: block;
 }
 
-.Header__inner h2 {
-  font-size: 1.3rem;
-  font-weight: 600;
+/* Title & Verified Badge */
+.profile-title-row {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.profile-name {
+  font-size: 1.25rem;
+  font-weight: 700;
   letter-spacing: -0.3px;
-  color: var(--font-color);
-  margin: 0;
+  color: var(--text-primary);
 }
 
 .verified-badge-gif {
@@ -105,70 +152,36 @@ html, body {
   flex-shrink: 0;
 }
 
-.Header__controls {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.switch-theme-button,
-.share-button {
-  background-color: var(--button-bg);
-  color: var(--button-color);
-  border: 1px solid var(--button-border);
-  border-radius: 9999px;
-  padding: 7px 12px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 200ms ease;
-  user-select: none;
-}
-
-.switch-theme-button:hover,
-.share-button:hover {
-  transform: scale(1.05);
-  border-color: var(--card-border-hover);
-}
-
-.switch-theme-button:active,
-.share-button:active {
-  transform: scale(0.95);
-}
-
-/* Card Grid (.row) */
-.row {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 16px;
-  margin-top: 20px;
-  margin-bottom: 36px;
-  align-items: start;
-}
-
-/* Card Component - Compact & Sleek */
-.Card {
+/* Pills Container (Vertical Stack) */
+.pills-container {
+  width: 100%;
   display: flex;
   flex-direction: column;
-  padding: 10px;
-  border-radius: 10px;
-  background-color: var(--card-bg);
-  border: 1px solid var(--card-border);
-  box-sizing: border-box;
-  width: 100%;
-  height: auto;
-  align-self: start;
-  cursor: pointer;
-  outline: none;
-  text-decoration: none;
-  opacity: 0;
-  transform: translateY(16px);
-  animation: card-fade-up 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  gap: 12px;
+  margin-bottom: 32px;
 }
 
-@keyframes card-fade-up {
+/* Pill Card (Capsule Shape) */
+.pill-card {
+  width: 100%;
+  height: 52px;
+  border-radius: 9999px;
+  background: var(--bg-pill);
+  border: 1px solid var(--border-pill);
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  text-decoration: none;
+  user-select: none;
+  opacity: 0;
+  transform: translateY(16px);
+  animation: pill-fade-up 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+@keyframes pill-fade-up {
   0% {
     opacity: 0;
     transform: translateY(16px);
@@ -179,124 +192,115 @@ html, body {
   }
 }
 
-.Card:hover {
-  background-color: var(--card-hover-bg);
-  border-color: var(--card-border-hover);
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+.pill-card:hover {
+  background: var(--bg-pill-hover);
+  border-color: var(--border-pill-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
 }
 
-.Card:active {
+.pill-card:active {
   transform: scale(0.98);
 }
 
-.Card:focus-visible {
-  border-color: var(--font-color);
+.pill-card:focus-visible {
+  outline: 2px solid var(--text-primary);
+  outline-offset: 2px;
 }
 
-/* Compact Cover Image Banner */
-.cover-wrapper {
-  width: 100%;
-  height: 84px;
-  background-color: var(--cover-bg);
-  border-radius: 6px;
-  overflow: hidden;
+/* Pill Icon */
+.pill-icon-wrapper {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid var(--card-border);
+  color: var(--text-primary);
 }
 
-.cover {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
-.cover-cover {
-  object-fit: cover;
-}
-
-.cover-contain {
-  object-fit: contain;
-  padding: 14px;
-}
-
-/* Compact Data Section */
-.data {
-  margin-top: 8px;
-  padding: 0 2px 2px;
-}
-
-.data-row {
+/* Pill Text */
+.pill-text-wrapper {
+  flex: 1;
+  margin-left: 14px;
+  margin-right: 12px;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 2px;
+  align-items: baseline;
+  gap: 8px;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
-.data h2 {
-  font-size: 1rem;
+.pill-title {
+  font-size: 0.95rem;
   font-weight: 600;
   letter-spacing: -0.2px;
-  color: var(--font-color);
-  margin: 0;
+  color: var(--text-primary);
 }
 
-.data p {
+.pill-subtitle {
   font-size: 0.8rem;
-  font-weight: 400;
-  color: var(--subtitle-color);
   font-family: "JetBrains Mono", monospace;
-  margin: 0;
+  color: var(--text-secondary);
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-/* Card Action Icons */
-.card-external-icon {
-  color: var(--subtitle-color);
+/* Pill Action */
+.pill-action-wrapper {
+  flex-shrink: 0;
   display: flex;
   align-items: center;
-  opacity: 0.7;
+}
+
+.pill-action-icon {
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  opacity: 0.55;
   transition: opacity 0.2s ease, color 0.2s ease;
 }
 
-.Card:hover .card-external-icon {
+.pill-card:hover .pill-action-icon {
   opacity: 1;
-  color: var(--font-color);
+  color: var(--text-primary);
 }
 
-.card-copy-btn {
-  background: var(--button-bg);
-  border: 1px solid var(--button-border);
-  color: var(--subtitle-color);
+.pill-action-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
   width: 28px;
   height: 28px;
-  border-radius: 6px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   transition: all 0.2s ease;
+  opacity: 0.7;
 }
 
-.card-copy-btn:hover {
-  color: var(--font-color);
-  border-color: var(--card-border-hover);
+.pill-action-btn:hover {
+  opacity: 1;
+  color: var(--text-primary);
 }
 
-.card-copy-btn.copied {
-  background: var(--font-color);
-  color: var(--background-color);
-  border-color: var(--font-color);
+.pill-action-btn.copied {
+  opacity: 1;
+  color: var(--text-primary);
 }
 
 /* Footer */
 .profile-footer {
+  width: 100%;
   text-align: center;
-  padding: 24px 0 28px;
-  font-size: 0.8rem;
-  color: var(--subtitle-color);
-  margin-top: auto;
+  padding-top: 8px;
+}
+
+.footer-text {
+  font-size: 0.78rem;
+  color: var(--text-muted);
 }
 
 /* Toast */
@@ -312,12 +316,12 @@ html, body {
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 10px 18px;
+  padding: 9px 16px;
   border-radius: 9999px;
-  background: #181818;
+  background: #1c1c1e;
   color: #ffffff;
-  border: 1px solid #333333;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
   font-size: 13px;
   font-weight: 500;
 }
@@ -328,33 +332,27 @@ html, body {
   color: #ffffff;
 }
 
-/* Responsive */
-@media (max-width: 549px) {
-  .Header {
-    padding: 16px 14px 4px;
-  }
-
-  .Header__inner h2 {
-    font-size: 1.15rem;
+/* Mobile Adjustments */
+@media (max-width: 480px) {
+  .app-layout {
+    padding: 32px 14px 44px;
   }
 
   .header-avatar {
-    width: 40px;
-    height: 40px;
-  }
-
-  .row {
-    margin-top: 16px;
-    margin-bottom: 24px;
-    gap: 14px;
-    padding: 0 14px;
-  }
-
-  .Card {
-    padding: 10px;
-  }
-
-  .cover-wrapper {
+    width: 76px;
     height: 76px;
+  }
+
+  .pill-card {
+    height: 50px;
+    padding: 0 16px;
+  }
+
+  .pill-title {
+    font-size: 0.9rem;
+  }
+
+  .pill-subtitle {
+    font-size: 0.76rem;
   }
 }
