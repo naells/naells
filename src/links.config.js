@@ -14,12 +14,11 @@ export const profileConfig = {
       type: "github",
     },
     {
-      id: "discord-user",
-      title: "Discord",
-      subtitle: "@bytecodev",
-      url: "https://discord.com/users/bytecodev",
-      copyValue: "@bytecodev",
-      type: "user",
+      id: "website",
+      title: "Website",
+      subtitle: "bytecode.my.id",
+      url: "https://bytecode.my.id",
+      type: "website",
     },
     {
       id: "discord-server",

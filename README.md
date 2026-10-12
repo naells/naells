@@ -5,7 +5,7 @@ Personal linktree page for Naell.
 ## Links
 
 - **GitHub**: [github.com/naells](https://github.com/naells)
-- **Discord**: `@bytecodev`
+- **Website**: [bytecode.my.id](https://bytecode.my.id)
 - **Discord Server**: [Stealth-X](https://discord.gg/stealth-x-1426911756424319089)
 - **TikTok**: [tiktok.com/@bytecodev](https://www.tiktok.com/@bytecodev)
 

@@ -4,6 +4,7 @@ import {
   DiscordIcon,
   UserIcon,
   TiktokIcon,
+  GlobeIcon,
   CopyIcon,
   CheckIcon,
   ExternalLinkIcon,
@@ -14,6 +15,8 @@ export const Card = ({ item, index, onCopy }) => {
 
   const getIcon = (type) => {
     switch (type) {
+      case "website":
+        return <GlobeIcon size={18} />;
       case "user":
         return <UserIcon size={18} />;
       case "discord":
