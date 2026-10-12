@@ -1,7 +1,7 @@
 {
   "short_name": "Naell",
-  "name": "Naell - Social Links & Communities",
-  "description": "Official links for Naell - GitHub, Discord, Stealth-X, TikTok",
+  "name": "Naell",
+  "description": "Naell - GitHub, bytecode.my.id, Stealth-X, TikTok",
   "icons": [
     {
       "src": "favicon.ico",
@@ -9,26 +9,26 @@
       "type": "image/x-icon"
     },
     {
-      "src": "android-icon-192x192.png",
+      "src": "icons/android-icon-192x192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "android-icon-144x144.png",
+      "src": "icons/android-icon-144x144.png",
       "type": "image/png",
       "sizes": "144x144"
     },
     {
-      "src": "apple-icon-180x180.png",
+      "src": "icons/apple-icon-180x180.png",
       "type": "image/png",
       "sizes": "180x180"
     }
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#6366f1",
-  "background_color": "#ffffff",
+  "theme_color": "#0a0a0a",
+  "background_color": "#0a0a0a",
   "orientation": "portrait",
-  "scope": "/",
+  "scope": "./",
   "lang": "en"
 }
