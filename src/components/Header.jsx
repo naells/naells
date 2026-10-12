@@ -37,14 +37,19 @@ export const Header = ({ profile, theme, onToggleTheme, onShare }) => {
         />
       </div>
 
-      <div className="profile-title-row">
-        <h1 className="profile-name">{profile.name}</h1>
-        {profile.verifiedBadge && (
-          <img
-            src={profile.verifiedBadge}
-            alt="Verified"
-            className="verified-badge-gif"
-          />
+      <div className="profile-title-container">
+        <div className="profile-title-row">
+          <h1 className="profile-name">{profile.name}</h1>
+          {profile.verifiedBadge && (
+            <img
+              src={profile.verifiedBadge}
+              alt="Verified"
+              className="verified-badge-gif"
+            />
+          )}
+        </div>
+        {profile.username && (
+          <p className="profile-username">{profile.username}</p>
         )}
       </div>
     </header>

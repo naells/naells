@@ -8,6 +8,7 @@ import tiktokIcon from "./assets/tik-tok.png";
 
 export const profileConfig = {
   name: "Naell",
+  username: "@bytecodev",
   avatar: avatarImg,
   verifiedBadge: verifiedGif,
   socialLinks: [
