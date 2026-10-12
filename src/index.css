@@ -16,6 +16,12 @@
 
   --btn-icon-bg: rgba(255, 255, 255, 0.06);
   --btn-icon-border: rgba(255, 255, 255, 0.1);
+
+  /* Dark Mode Shadows (Multi-layer deep drop-shadow + ambient glow + inset glass bevel) */
+  --shadow-pill: 0 6px 20px rgba(0, 0, 0, 0.75), 0 2px 6px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.09);
+  --shadow-pill-hover: 0 12px 32px rgba(0, 0, 0, 0.9), 0 0 20px rgba(255, 255, 255, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  --shadow-avatar: 0 10px 28px rgba(0, 0, 0, 0.8), 0 0 24px rgba(255, 255, 255, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  --shadow-btn: 0 4px 14px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 [data-theme="light"] {
@@ -29,8 +35,14 @@
   --text-secondary: #636366;
   --text-muted: #8e8e93;
 
-  --btn-icon-bg: #e5e5ea;
+  --btn-icon-bg: #ffffff;
   --btn-icon-border: #d1d1d6;
+
+  /* Light Mode Shadows */
+  --shadow-pill: 0 4px 14px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.03);
+  --shadow-pill-hover: 0 12px 28px rgba(0, 0, 0, 0.12), 0 4px 10px rgba(0, 0, 0, 0.06);
+  --shadow-avatar: 0 10px 28px rgba(0, 0, 0, 0.12);
+  --shadow-btn: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 /* Base */
@@ -94,6 +106,7 @@ html, body {
   background: var(--btn-icon-bg);
   color: var(--text-secondary);
   border: 1px solid var(--btn-icon-border);
+  box-shadow: var(--shadow-btn);
   width: 36px;
   height: 36px;
   border-radius: 50%;
@@ -128,7 +141,7 @@ html, body {
   border-radius: 50%;
   object-fit: cover;
   border: 1px solid var(--border-pill);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  box-shadow: var(--shadow-avatar);
   display: block;
 }
 
@@ -170,6 +183,7 @@ html, body {
   border-radius: 9999px;
   background: var(--bg-pill);
   border: 1px solid var(--border-pill);
+  box-shadow: var(--shadow-pill);
   padding: 0 20px;
   display: flex;
   align-items: center;
@@ -198,7 +212,7 @@ html, body {
   background: var(--bg-pill-hover);
   border-color: var(--border-pill-hover);
   transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+  box-shadow: var(--shadow-pill-hover);
 }
 
 .pill-card:active {
