@@ -242,8 +242,18 @@ html, body {
   display: block;
 }
 
+/* GitHub SVG is white by default -> invert to black in light mode */
 [data-theme="light"] .pill-icon-img.github-icon {
   filter: invert(1);
+}
+
+/* browser.png is black by default -> invert to white in dark mode, keep original black in light mode */
+.pill-icon-img.browser-icon {
+  filter: invert(1);
+}
+
+[data-theme="light"] .pill-icon-img.browser-icon {
+  filter: none;
 }
 
 /* Pill Text */

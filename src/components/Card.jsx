@@ -32,11 +32,18 @@ export const Card = ({ item, index, onCopy }) => {
 
   const renderIcon = () => {
     if (item.icon) {
+      const iconClass =
+        item.type === "github"
+          ? "github-icon"
+          : item.type === "website" || item.id === "website"
+          ? "browser-icon"
+          : "";
+
       return (
         <img
           src={item.icon}
           alt={`${item.title} icon`}
-          className={`pill-icon-img ${item.type === "github" ? "github-icon" : ""}`}
+          className={`pill-icon-img ${iconClass}`}
           loading="lazy"
         />
       );
