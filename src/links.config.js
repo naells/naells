@@ -16,7 +16,7 @@ export const profileConfig = {
       subtitle: "@naells",
       url: "https://github.com/naells",
       cover: githubCover,
-      coverFit: "cover",
+      coverFit: "contain",
     },
     {
       id: "discord-user",

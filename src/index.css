@@ -57,11 +57,11 @@ html, body {
   flex-direction: column;
 }
 
-/* Container Grid (Original Skeleton Grid Pattern) */
+/* Container Grid */
 .container {
   position: relative;
   width: 100%;
-  max-width: 900px;
+  max-width: 720px;
   margin: 0 auto;
   padding: 0 20px;
   box-sizing: border-box;
@@ -69,7 +69,7 @@ html, body {
 
 /* Header */
 .Header {
-  padding: 24px 20px 8px;
+  padding: 20px 20px 4px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -82,8 +82,8 @@ html, body {
 }
 
 .header-avatar {
-  width: 48px;
-  height: 48px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   object-fit: cover;
   flex-shrink: 0;
@@ -91,7 +91,7 @@ html, body {
 }
 
 .Header__inner h2 {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   font-weight: 600;
   letter-spacing: -0.3px;
   color: var(--font-color);
@@ -99,8 +99,8 @@ html, body {
 }
 
 .verified-badge-gif {
-  width: 22px;
-  height: 22px;
+  width: 20px;
+  height: 20px;
   object-fit: contain;
   flex-shrink: 0;
 }
@@ -117,7 +117,7 @@ html, body {
   color: var(--button-color);
   border: 1px solid var(--button-border);
   border-radius: 9999px;
-  padding: 8px 14px;
+  padding: 7px 12px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -140,19 +140,19 @@ html, body {
 /* Card Grid (.row) */
 .row {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
-  margin-top: 24px;
-  margin-bottom: 40px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 14px;
+  margin-top: 20px;
+  margin-bottom: 36px;
   flex: 1;
 }
 
-/* Card Component */
+/* Card Component - Compact & Sleek */
 .Card {
   display: flex;
   flex-direction: column;
-  padding: 12px;
-  border-radius: 12px;
+  padding: 10px;
+  border-radius: 10px;
   background-color: var(--card-bg);
   border: 1px solid var(--card-border);
   box-sizing: border-box;
@@ -161,15 +161,15 @@ html, body {
   outline: none;
   text-decoration: none;
   opacity: 0;
-  transform: translateY(20px);
-  animation: card-fade-up 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  transition: transform 0.22s ease, background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  transform: translateY(16px);
+  animation: card-fade-up 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 @keyframes card-fade-up {
   0% {
     opacity: 0;
-    transform: translateY(24px);
+    transform: translateY(16px);
   }
   100% {
     opacity: 1;
@@ -180,8 +180,8 @@ html, body {
 .Card:hover {
   background-color: var(--card-hover-bg);
   border-color: var(--card-border-hover);
-  transform: translateY(-4px);
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
 }
 
 .Card:active {
@@ -192,12 +192,12 @@ html, body {
   border-color: var(--font-color);
 }
 
-/* Cover Image Banner */
+/* Compact Cover Image Banner */
 .cover-wrapper {
   width: 100%;
-  height: 110px;
+  height: 60px;
   background-color: var(--cover-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -217,12 +217,12 @@ html, body {
 
 .cover-contain {
   object-fit: contain;
-  padding: 18px;
+  padding: 10px;
 }
 
-/* Data Section */
+/* Compact Data Section */
 .data {
-  margin-top: 12px;
+  margin-top: 8px;
   padding: 0 2px 2px;
 }
 
@@ -230,11 +230,11 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 4px;
+  margin-bottom: 2px;
 }
 
 .data h2 {
-  font-size: 1.15rem;
+  font-size: 1rem;
   font-weight: 600;
   letter-spacing: -0.2px;
   color: var(--font-color);
@@ -242,7 +242,7 @@ html, body {
 }
 
 .data p {
-  font-size: 0.88rem;
+  font-size: 0.8rem;
   font-weight: 400;
   color: var(--subtitle-color);
   font-family: "JetBrains Mono", monospace;
@@ -352,6 +352,6 @@ html, body {
   }
 
   .cover-wrapper {
-    height: 96px;
+    height: 54px;
   }
 }
