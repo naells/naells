@@ -1,8 +1,10 @@
+import avatarImg from "./assets/avatar.jpeg";
+
 export const profileConfig = {
   name: "Naell",
   tagline: "Developer & Tech Enthusiast",
   bio: "Welcome to my official links! Explore my GitHub projects, join the Stealth-X community, or connect on Discord and TikTok.",
-  avatar: "https://github.com/naells.png",
+  avatar: avatarImg,
   avatarFallback: "N",
   verified: true,
   status: {
