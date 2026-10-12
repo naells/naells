@@ -87,7 +87,7 @@ html, body {
   align-items: center;
 }
 
-/* Header - Stays at top of Row 1 */
+/* Header - Balanced in Row 1 (Lowered slightly for natural spacing) */
 .profile-header {
   position: relative;
   width: 100%;
@@ -95,9 +95,9 @@ html, body {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  align-self: start;
-  margin-top: 10px;
-  margin-bottom: 16px;
+  align-self: center;
+  margin-top: 20px;
+  margin-bottom: 12px;
 }
 
 .header-top-bar {
