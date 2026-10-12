@@ -7,22 +7,13 @@ import { Toast } from "./components/Toast";
 import bgVideo from "./assets/background.mp4";
 
 function App() {
-  const [theme, setTheme] = useState(() => {
-    const saved = localStorage.getItem("naell-theme");
-    return saved ? saved : "dark";
-  });
   const [toastMessage, setToastMessage] = useState("");
   const [toastVisible, setToastVisible] = useState(false);
 
   useEffect(() => {
-    document.body.setAttribute("data-theme", theme);
-    document.documentElement.setAttribute("data-theme", theme);
-    localStorage.setItem("naell-theme", theme);
-  }, [theme]);
-
-  const toggleTheme = () => {
-    setTheme((prev) => (prev === "dark" ? "light" : "dark"));
-  };
+    document.body.setAttribute("data-theme", "dark");
+    document.documentElement.setAttribute("data-theme", "dark");
+  }, []);
 
   const showToast = (message) => {
     setToastMessage(message);
@@ -57,7 +48,7 @@ function App() {
   };
 
   return (
-    <div className="app-layout" data-theme={theme}>
+    <div className="app-layout" data-theme="dark">
       <div className="video-bg-container" aria-hidden="true">
         <video
           className="background-video"
@@ -73,8 +64,6 @@ function App() {
       <div className="mobile-frame">
         <Header
           profile={profileConfig}
-          theme={theme}
-          onToggleTheme={toggleTheme}
           onShare={handleShare}
         />
 

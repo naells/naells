@@ -1,9 +1,7 @@
 import React from "react";
-import { SunIcon, MoonIcon, ShareIcon } from "./Icons";
+import { ShareIcon } from "./Icons";
 
-export const Header = ({ profile, theme, onToggleTheme, onShare }) => {
-  const isDark = theme === "dark";
-
+export const Header = ({ profile, onShare }) => {
   return (
     <header className="profile-header">
       <div className="header-top-bar">
@@ -15,16 +13,6 @@ export const Header = ({ profile, theme, onToggleTheme, onShare }) => {
           title="Share"
         >
           <ShareIcon size={18} />
-        </button>
-
-        <button
-          type="button"
-          className="header-icon-btn"
-          onClick={onToggleTheme}
-          aria-label={`Switch to ${isDark ? "light" : "dark"} mode`}
-          title={`Switch to ${isDark ? "light" : "dark"} mode`}
-        >
-          {isDark ? <SunIcon size={18} /> : <MoonIcon size={18} />}
         </button>
       </div>
 
