@@ -1,31 +1,8 @@
 import React, { useState } from "react";
-import {
-  GithubIcon,
-  DiscordIcon,
-  UserIcon,
-  TiktokIcon,
-  ExternalLinkIcon,
-  CopyIcon,
-  CheckIcon,
-} from "./Icons";
+import { CopyIcon, CheckIcon, ExternalLinkIcon } from "./Icons";
 
 export const Card = ({ item, index, onCopy }) => {
   const [copied, setCopied] = useState(false);
-
-  const getIcon = (type) => {
-    switch (type) {
-      case "user":
-        return <UserIcon size={20} />;
-      case "discord":
-        return <DiscordIcon size={20} />;
-      case "github":
-        return <GithubIcon size={20} />;
-      case "tiktok":
-        return <TiktokIcon size={20} />;
-      default:
-        return <ExternalLinkIcon size={20} />;
-    }
-  };
 
   const handleCopy = (e) => {
     e.preventDefault();
@@ -38,7 +15,7 @@ export const Card = ({ item, index, onCopy }) => {
     }
   };
 
-  const handleCardClick = (e) => {
+  const handleClick = () => {
     if (item.url) {
       window.open(item.url, "_blank", "noopener,noreferrer");
     }
@@ -47,46 +24,50 @@ export const Card = ({ item, index, onCopy }) => {
   const handleKeyDown = (e) => {
     if (e.key === "Enter" || e.key === " ") {
       e.preventDefault();
-      handleCardClick(e);
+      handleClick();
     }
   };
 
   return (
     <div
-      className="link-card"
-      onClick={handleCardClick}
+      className="Card"
+      style={{ animationDelay: `${index * 0.09}s` }}
+      onClick={handleClick}
       onKeyDown={handleKeyDown}
-      role="button"
       tabIndex={0}
-      aria-label={`Open ${item.title}`}
+      role="button"
+      aria-label={`Visit ${item.title}`}
     >
-      <div className="card-icon-container">
-        <div className="card-icon">{getIcon(item.type)}</div>
+      <div className="cover-wrapper">
+        <img
+          src={item.cover}
+          className={`cover cover-${item.coverFit || "cover"}`}
+          alt={`${item.title} cover`}
+          loading="lazy"
+        />
       </div>
 
-      <div className="card-content">
-        <h2 className="card-title">{item.title}</h2>
-        {item.subtitle && <p className="card-subtitle">{item.subtitle}</p>}
-      </div>
+      <div className="data">
+        <div className="data-row">
+          <h2>{item.title}</h2>
 
-      <div className="card-actions">
-        {item.copyValue && (
-          <button
-            type="button"
-            className={`action-btn copy-btn ${copied ? "copied" : ""}`}
-            onClick={handleCopy}
-            title={`Copy ${item.copyValue}`}
-            aria-label={`Copy ${item.copyValue}`}
-          >
-            {copied ? <CheckIcon size={16} /> : <CopyIcon size={16} />}
-          </button>
-        )}
-
-        {item.url && !item.copyValue && (
-          <span className="action-btn arrow-btn" title="Open link">
-            <ExternalLinkIcon size={16} />
-          </span>
-        )}
+          {item.copyValue ? (
+            <button
+              type="button"
+              className={`card-copy-btn ${copied ? "copied" : ""}`}
+              onClick={handleCopy}
+              title={`Copy ${item.copyValue}`}
+              aria-label={`Copy ${item.copyValue}`}
+            >
+              {copied ? <CheckIcon size={14} /> : <CopyIcon size={14} />}
+            </button>
+          ) : (
+            <span className="card-external-icon">
+              <ExternalLinkIcon size={14} />
+            </span>
+          )}
+        </div>
+        <p>{item.subtitle}</p>
       </div>
     </div>
   );

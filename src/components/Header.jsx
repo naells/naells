@@ -2,40 +2,48 @@ import React from "react";
 import { SunIcon, MoonIcon, ShareIcon } from "./Icons";
 
 export const Header = ({ profile, theme, onToggleTheme, onShare }) => {
+  const isDark = theme === "dark";
+
   return (
-    <header className="profile-header">
-      <div className="header-controls">
-        <button
-          type="button"
-          className="control-btn"
-          onClick={onShare}
-          aria-label="Share profile"
-          title="Share"
-        >
-          <ShareIcon size={18} />
-        </button>
-
-        <button
-          type="button"
-          className="control-btn"
-          onClick={onToggleTheme}
-          aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
-          title={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
-        >
-          {theme === "dark" ? <SunIcon size={18} /> : <MoonIcon size={18} />}
-        </button>
-      </div>
-
-      <div className="avatar-wrapper">
+    <div className="Header container">
+      <div className="Header__inner">
         <img
           src={profile.avatar}
           alt={profile.name}
-          className="avatar-img"
+          className="header-avatar"
           loading="eager"
         />
+        <h2>{profile.name}</h2>
+        {profile.verifiedBadge && (
+          <img
+            src={profile.verifiedBadge}
+            alt="Verified"
+            className="verified-badge-gif"
+          />
+        )}
       </div>
 
-      <h1 className="profile-name">{profile.name}</h1>
-    </header>
+      <div className="Header__controls">
+        <button
+          type="button"
+          className="share-button"
+          onClick={onShare}
+          aria-label="Share"
+          title="Share"
+        >
+          <ShareIcon size={16} />
+        </button>
+
+        <button
+          type="button"
+          className="switch-theme-button"
+          onClick={onToggleTheme}
+          aria-label={`Switch to ${isDark ? "light" : "dark"} theme`}
+          title={`Switch to ${isDark ? "light" : "dark"} theme`}
+        >
+          {isDark ? <SunIcon size={16} /> : <MoonIcon size={16} />}
+        </button>
+      </div>
+    </div>
   );
 };
