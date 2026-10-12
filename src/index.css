@@ -7,17 +7,18 @@
 :root {
   /* Dark Mode Default - Pure Sleek Monochrome */
   --bg-page: #0a0a0a;
-  --bg-pill: rgba(255, 255, 255, 0.05);
-  --bg-pill-hover: rgba(255, 255, 255, 0.1);
-  --border-pill: rgba(255, 255, 255, 0.08);
-  --border-pill-hover: rgba(255, 255, 255, 0.22);
+  --video-overlay: rgba(10, 10, 10, 0.45);
+  --bg-pill: rgba(22, 22, 24, 0.68);
+  --bg-pill-hover: rgba(36, 36, 42, 0.82);
+  --border-pill: rgba(255, 255, 255, 0.12);
+  --border-pill-hover: rgba(255, 255, 255, 0.28);
 
   --text-primary: #ffffff;
   --text-secondary: #8e8e93;
   --text-muted: #525252;
 
-  --btn-icon-bg: rgba(255, 255, 255, 0.06);
-  --btn-icon-border: rgba(255, 255, 255, 0.1);
+  --btn-icon-bg: rgba(255, 255, 255, 0.08);
+  --btn-icon-border: rgba(255, 255, 255, 0.14);
 
   /* Dark Mode Shadows (Multi-layer deep drop-shadow + ambient glow + inset glass bevel) */
   --shadow-pill: 0 6px 20px rgba(0, 0, 0, 0.75), 0 2px 6px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.09);
@@ -28,16 +29,17 @@
 
 [data-theme="light"] {
   --bg-page: #f5f5f7;
-  --bg-pill: #ffffff;
-  --bg-pill-hover: #fafafa;
-  --border-pill: #e5e5ea;
-  --border-pill-hover: #c7c7cc;
+  --video-overlay: rgba(245, 245, 247, 0.55);
+  --bg-pill: rgba(255, 255, 255, 0.76);
+  --bg-pill-hover: rgba(255, 255, 255, 0.9);
+  --border-pill: rgba(0, 0, 0, 0.1);
+  --border-pill-hover: rgba(0, 0, 0, 0.22);
 
   --text-primary: #1c1c1e;
   --text-secondary: #636366;
   --text-muted: #8e8e93;
 
-  --btn-icon-bg: #ffffff;
+  --btn-icon-bg: rgba(255, 255, 255, 0.85);
   --btn-icon-border: #d1d1d6;
 
   /* Light Mode Shadows */
@@ -64,6 +66,44 @@ html, body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* Background Video */
+.video-bg-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.background-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  min-width: 100%;
+  min-height: 100%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  object-position: center;
+}
+
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--video-overlay);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  transition: background 0.3s ease;
+}
+
 /* App Layout - Full viewport frame */
 .app-layout {
   position: relative;
@@ -78,6 +118,7 @@ html, body {
 /* Mobile Frame (Grid: Top 1fr, Center auto, Bottom 1fr) */
 .mobile-frame {
   position: relative;
+  z-index: 1;
   width: 100%;
   max-width: 440px;
   min-height: calc(100vh - 52px);
@@ -214,6 +255,8 @@ html, body {
   background: var(--bg-pill);
   border: 1px solid var(--border-pill);
   box-shadow: var(--shadow-pill);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   padding: 0 20px;
   display: flex;
   align-items: center;

@@ -4,6 +4,7 @@ import { Header } from "./components/Header";
 import { Card } from "./components/Card";
 import { Footer } from "./components/Footer";
 import { Toast } from "./components/Toast";
+import bgVideo from "./assets/background.mp4";
 
 function App() {
   const [theme, setTheme] = useState(() => {
@@ -57,6 +58,18 @@ function App() {
 
   return (
     <div className="app-layout" data-theme={theme}>
+      <div className="video-bg-container" aria-hidden="true">
+        <video
+          className="background-video"
+          src={bgVideo}
+          autoPlay
+          loop
+          muted
+          playsInline
+        />
+        <div className="video-overlay" />
+      </div>
+
       <div className="mobile-frame">
         <Header
           profile={profileConfig}
