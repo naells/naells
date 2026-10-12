@@ -14,7 +14,7 @@ export const Header = ({ profile, theme, onToggleTheme, onShare }) => {
           aria-label="Share profile"
           title="Share"
         >
-          <ShareIcon size={16} />
+          <ShareIcon size={18} />
         </button>
 
         <button
@@ -24,7 +24,7 @@ export const Header = ({ profile, theme, onToggleTheme, onShare }) => {
           aria-label={`Switch to ${isDark ? "light" : "dark"} mode`}
           title={`Switch to ${isDark ? "light" : "dark"} mode`}
         >
-          {isDark ? <SunIcon size={16} /> : <MoonIcon size={16} />}
+          {isDark ? <SunIcon size={18} /> : <MoonIcon size={18} />}
         </button>
       </div>
 
