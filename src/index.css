@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300..1000;1,300..1000&display=swap');
+
 /* ==========================================================================
    NAELL - SLEEK MOBILE PILL LINKTREE (MATCHING REFERENCE MOCKUP)
    ========================================================================== */
@@ -54,7 +56,7 @@
 
 html, body {
   min-height: 100%;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   background-color: var(--bg-page);
   color: var(--text-primary);
   transition: background-color 0.2s ease, color 0.2s ease;
@@ -304,8 +306,7 @@ html, body {
 }
 
 .pill-subtitle {
-  font-size: 0.8rem;
-  font-family: "JetBrains Mono", monospace;
+  font-size: 0.82rem;
   color: var(--text-secondary);
   overflow: hidden;
   text-overflow: ellipsis;
