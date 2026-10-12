@@ -62,30 +62,30 @@ html, body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* App Layout - Elevated profile, pinned footer at bottom */
+/* App Layout - Full viewport frame */
 .app-layout {
   position: relative;
   min-height: 100vh;
   min-height: 100dvh;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  padding: 56px 16px 24px;
+  justify-content: center;
+  align-items: stretch;
+  padding: 32px 16px 20px;
 }
 
-/* Mobile Frame (Centered, Narrow Column) */
+/* Mobile Frame (Grid: Top 1fr, Center auto, Bottom 1fr) */
 .mobile-frame {
   position: relative;
   width: 100%;
   max-width: 440px;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
+  min-height: calc(100vh - 52px);
+  min-height: calc(100dvh - 52px);
+  display: grid;
+  grid-template-rows: 1fr auto 1fr;
   align-items: center;
 }
 
-/* Header */
+/* Header - Stays at top of Row 1 */
 .profile-header {
   position: relative;
   width: 100%;
@@ -93,8 +93,9 @@ html, body {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  margin-top: 8px;
-  margin-bottom: 28px;
+  align-self: start;
+  margin-top: 10px;
+  margin-bottom: 16px;
 }
 
 .header-top-bar {
@@ -193,13 +194,14 @@ html, body {
   letter-spacing: -0.2px;
 }
 
-/* Pills Container (Vertical Stack) */
+/* Pills Container (Vertical Stack - Centered in middle row) */
 .pills-container {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 12px;
-  margin-bottom: 32px;
+  align-self: center;
+  margin: 0;
 }
 
 /* Pill Card (Capsule Shape) */
@@ -354,13 +356,13 @@ html, body {
   color: var(--text-primary);
 }
 
-/* Footer */
+/* Footer - Stays at bottom of Row 3 */
 .profile-footer {
   width: 100%;
   text-align: center;
-  margin-top: auto;
-  padding-top: 32px;
-  padding-bottom: 8px;
+  align-self: end;
+  padding-top: 16px;
+  padding-bottom: 6px;
 }
 
 .footer-text {
@@ -411,7 +413,12 @@ html, body {
   }
 
   .app-layout {
-    padding: 36px 14px 20px;
+    padding: 24px 14px 16px;
+  }
+
+  .mobile-frame {
+    min-height: calc(100vh - 40px);
+    min-height: calc(100dvh - 40px);
   }
 
   .header-avatar {
@@ -430,5 +437,17 @@ html, body {
 
   .pill-subtitle {
     font-size: 0.76rem;
+  }
+}
+
+@media (max-height: 580px) {
+  .mobile-frame {
+    display: flex;
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .pills-container {
+    margin: 24px 0;
   }
 }
