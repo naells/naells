@@ -50,14 +50,14 @@ html, body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* App Layout */
+/* App Layout - Vertically & Horizontally Centered */
 .app-layout {
   position: relative;
   min-height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-  padding: 40px 16px 50px;
+  align-items: center;
+  padding: clamp(60px, 12vh, 140px) 16px 60px;
 }
 
 /* Mobile Frame (Centered, Narrow Column) */
