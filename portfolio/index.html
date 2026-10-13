@@ -1,572 +1,352 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Naell — Portfolio</title>
+    <meta name="description" content="Naell - Full-Stack Developer & Founder of Stealth-X." />
+    <meta name="author" content="Naell" />
+    <meta name="theme-color" content="#0a0a0a" />
+    <link rel="icon" type="image/x-icon" href="./assets/favicon.ico" />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Naell — Developer & Founder Portfolio</title>
-  <meta name="description"
-    content="Naell - Full-Stack Developer & Founder of Stealth-X. Explore projects, engineering ecosystem, and communities." />
-  <meta name="author" content="Naell" />
-  <meta name="theme-color" content="#0a0a0a" />
+    <!-- Pure Black Instant Render Style -->
+    <style>
+      html, body {
+        background-color: #000000 !important;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
 
-  <!-- Open Graph -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Naell - Developer & Founder Portfolio" />
-  <meta property="og:description" content="Full-Stack Developer, Founder of Stealth-X & bytecode.my.id." />
-  <meta property="og:image" content="./assets/avatar.jpeg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300..1000;1,300..1000&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <!-- Background Video Sequence -->
+    <div class="video-bg-container" aria-hidden="true">
+      <video
+        id="opening-video"
+        class="background-video opening-video"
+        src="./assets/opening.mp4"
+        autoplay
+        muted
+        playsinline
+        preload="auto"
+      ></video>
+      <video
+        id="loop-video"
+        class="background-video loop-video"
+        src="./assets/loop.mp4"
+        muted
+        playsinline
+        loop
+        preload="auto"
+      ></video>
+      <div class="video-overlay"></div>
+    </div>
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href="./assets/favicon.ico" />
-
-  <!-- Pure Black Instant Render Style (Prevents White Flashes) -->
-  <style>
-    html,
-    body {
-      background-color: #000000 !important;
-      margin: 0;
-      padding: 0;
-    }
-  </style>
-
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300..1000;1,300..1000&family=Outfit:wght@300;400;500;600;700;800&display=swap"
-    rel="stylesheet" />
-
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="./style.css" />
-</head>
-
-<body>
-  <!-- Background Video Sequence (Opening -> Loop onPlaying Hardware Cut) -->
-  <div class="video-bg-container" aria-hidden="true">
-    <video id="opening-video" class="background-video opening-video" src="./assets/opening.mp4" autoplay muted
-      playsinline preload="auto"></video>
-    <video id="loop-video" class="background-video loop-video" src="./assets/loop.mp4" muted playsinline loop
-      preload="auto"></video>
-    <div class="video-overlay"></div>
-  </div>
-
-  <!-- Floating Navigation Bar -->
-  <header class="navbar-wrapper">
-    <nav class="nav-glass-pill" aria-label="Main Navigation">
-      <a href="#hero" class="nav-brand" aria-label="Naell Home">
-        <img src="./assets/avatar.jpeg" alt="Naell Avatar" class="nav-brand-avatar" />
-        <span class="nav-brand-text">Naell</span>
-        <img src="./assets/764230-verified.gif" alt="Verified" class="nav-verified-badge" />
-      </a>
-
-      <div class="nav-links">
-        <a href="#about" class="nav-link">About</a>
-        <a href="#projects" class="nav-link">Projects</a>
-        <a href="#skills" class="nav-link">Skills</a>
-        <a href="#contact" class="nav-link">Contact</a>
-      </div>
-
-      <a href="https://discord.gg/stealth-x-1426911756424319089" target="_blank" rel="noopener noreferrer"
-        class="nav-cta-btn" aria-label="Join Stealth-X Discord">
-        <span>Stealth-X</span>
-        <svg class="nav-arrow-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor"
-          stroke-width="2.2">
-          <path d="M7 17L17 7M17 7H7M17 7V17" />
-        </svg>
-      </a>
-    </nav>
-  </header>
-
-  <!-- Main Content Container -->
-  <div class="portfolio-container">
-    <!-- HERO SECTION -->
-    <section id="hero" class="hero-section">
-      <div class="hero-avatar-wrapper">
-        <div class="avatar-ambient-glow"></div>
-        <img src="./assets/avatar.jpeg" alt="Naell" class="hero-avatar" />
-        <img src="./assets/764230-verified.gif" alt="Verified Badge" class="hero-verified-gif" />
-      </div>
-
-      <div class="hero-header-block">
-        <div class="hero-status-pill">
-          <span class="status-pulse-dot"></span>
-          <span>Building Stealth-X & Digital Systems</span>
-        </div>
-
-        <h1 class="hero-title">Naell</h1>
-        <p class="hero-subtitle">
-          Full-Stack Developer, Systems Enthusiast & Founder of
-          <span class="highlight-text">Stealth-X</span>.
-        </p>
-      </div>
-
-      <p class="hero-bio">
-        Designing ultra-sleek web applications, automation frameworks, and high-performance digital ecosystems.
-        Passionate about dark minimalist ergonomics, iOS glassmorphism, and seamless modern experiences.
-      </p>
-
-      <!-- Stats / Highlights Pills -->
-      <div class="hero-tags-row">
-        <div class="glass-tag-pill">
-          <span class="tag-icon">
-            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+    <!-- App Layout (Sleek Centered Mobile Frame Matching Linktree) -->
+    <div class="app-layout">
+      <div class="portfolio-frame">
+        <!-- Top Action Bar -->
+        <header class="frame-top-bar">
+          <a href="../" class="top-bar-btn" title="Back to Links" aria-label="Back to Linktree">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M19 12H5M12 19l-7-7 7-7" />
             </svg>
-          </span>
-          <span>Full-Stack Development</span>
-        </div>
-        <div class="glass-tag-pill">
-          <span class="tag-icon">
-            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+          </a>
+          <button type="button" id="share-btn" class="top-bar-btn" title="Share" aria-label="Share Portfolio">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8" />
+              <polyline points="16 6 12 2 8 6" />
+              <line x1="12" y1="2" x2="12" y2="15" />
             </svg>
-          </span>
-          <span>Founder @ Stealth-X</span>
-        </div>
-        <div class="glass-tag-pill">
-          <span class="tag-icon">
-            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10" />
-              <line x1="2" y1="12" x2="22" y2="12" />
-              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-            </svg>
-          </span>
-          <span>bytecode.my.id</span>
-        </div>
-        <div class="glass-tag-pill">
-          <span class="tag-icon">
-            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
-              <line x1="12" y1="18" x2="12.01" y2="18" />
-            </svg>
-          </span>
-          <span>@bytecodev</span>
-        </div>
-      </div>
-
-      <!-- Hero Action Buttons -->
-      <div class="hero-actions-row">
-        <a href="#projects" class="btn-primary-glass">
-          <span>Explore Projects</span>
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M5 12h14M12 5l7 7-7 7" />
-          </svg>
-        </a>
-        <a href="https://bytecode.my.id" target="_blank" rel="noopener noreferrer" class="btn-secondary-glass">
-          <img src="./assets/browser.png" alt="Website" class="btn-icon" />
-          <span>bytecode.my.id</span>
-        </a>
-        <button type="button" id="copy-discord-btn" class="btn-secondary-glass"
-          data-copy="https://discord.gg/stealth-x-1426911756424319089">
-          <img src="./assets/discord.svg" alt="Discord" class="btn-icon" />
-          <span>Copy Discord Link</span>
-        </button>
-      </div>
-    </section>
-
-    <!-- ABOUT & HIGHLIGHTS -->
-    <section id="about" class="section-container">
-      <div class="section-header">
-        <span class="section-label">OVERVIEW</span>
-        <h2 class="section-title">Core Competencies & Focus</h2>
-        <p class="section-desc">Building resilient digital infrastructure with modern aesthetics and robust backends.
-        </p>
-      </div>
-
-      <div class="glass-grid-3">
-        <div class="feature-glass-card">
-          <div class="card-icon-badge">
-            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
-              <line x1="8" y1="21" x2="16" y2="21" />
-              <line x1="12" y1="17" x2="12" y2="21" />
-            </svg>
-          </div>
-          <h3 class="feature-title">Modern Web Engineering</h3>
-          <p class="feature-desc">
-            Crafting fluid, dynamic Single-Page Applications with Vite, React, vanilla frameworks, and responsive
-            mobile-first architectures.
-          </p>
-          <div class="card-pills-row">
-            <span class="mini-pill">React</span>
-            <span class="mini-pill">Vite</span>
-            <span class="mini-pill">JavaScript</span>
-          </div>
-        </div>
-
-        <div class="feature-glass-card">
-          <div class="card-icon-badge">
-            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="4 17 10 11 4 5" />
-              <line x1="12" y1="19" x2="20" y2="19" />
-            </svg>
-          </div>
-          <h3 class="feature-title">Systems & Automation</h3>
-          <p class="feature-desc">
-            Designing automation pipelines, event-driven webhooks, and scalable Discord bots that power the growing
-            Stealth-X community.
-          </p>
-          <div class="card-pills-row">
-            <span class="mini-pill">Node.js</span>
-            <span class="mini-pill">Webhooks</span>
-            <span class="mini-pill">Discord API</span>
-          </div>
-        </div>
-
-        <div class="feature-glass-card">
-          <div class="card-icon-badge">
-            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polygon points="12 2 2 7 12 12 22 7 12 2" />
-              <polyline points="2 17 12 22 22 17" />
-              <polyline points="2 12 12 17 22 12" />
-            </svg>
-          </div>
-          <h3 class="feature-title">Refined Glass Aesthetics</h3>
-          <p class="feature-desc">
-            Crafting premium interfaces inspired by Apple's iOS design language, combining multi-layer frosted glass,
-            ambient glows, and rich dark modes.
-          </p>
-          <div class="card-pills-row">
-            <span class="mini-pill">iOS Glass</span>
-            <span class="mini-pill">Backdrop Filter</span>
-            <span class="mini-pill">Motion</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FEATURED PROJECTS -->
-    <section id="projects" class="section-container">
-      <div class="section-header">
-        <span class="section-label">PORTFOLIO</span>
-        <h2 class="section-title">Featured Works & Ecosystem</h2>
-        <p class="section-desc">Selected projects and digital platforms engineered with high standards.</p>
-      </div>
-
-      <!-- Project Cards Grid -->
-      <div class="projects-grid">
-        <!-- Project 1: Stealth-X -->
-        <article class="project-glass-card">
-          <div class="project-card-header">
-            <div class="project-badge">FOUNDER & LEAD</div>
-            <span class="project-year">Active</span>
-          </div>
-
-          <div class="project-content">
-            <div class="project-title-row">
-              <div class="project-icon-box">
-                <img src="./assets/discord.svg" alt="Stealth-X" width="22" height="22" />
-              </div>
-              <h3 class="project-name">Stealth-X Ecosystem</h3>
-            </div>
-
-            <p class="project-desc">
-              An exclusive digital hub and developer collective focusing on custom scripting, bot automation, gaming
-              infrastructure, and cutting-edge tech utilities.
-            </p>
-
-            <div class="project-tags">
-              <span class="tag-item">Community</span>
-              <span class="tag-item">Discord Bots</span>
-              <span class="tag-item">Automation</span>
-              <span class="tag-item">Systems</span>
-            </div>
-          </div>
-
-          <div class="project-card-footer">
-            <a href="https://discord.gg/stealth-x-1426911756424319089" target="_blank" rel="noopener noreferrer"
-              class="project-action-link">
-              <span>Join Community</span>
-              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M7 17L17 7M17 7H7M17 7V17" />
-              </svg>
-            </a>
-            <button type="button" class="project-copy-link" data-copy="https://discord.gg/stealth-x-1426911756424319089"
-              title="Copy Invite Link">
-              Copy Link
-            </button>
-          </div>
-        </article>
-
-        <!-- Project 2: bytecode.my.id -->
-        <article class="project-glass-card">
-          <div class="project-card-header">
-            <div class="project-badge">ENGINEERING DOMAIN</div>
-            <span class="project-year">Live</span>
-          </div>
-
-          <div class="project-content">
-            <div class="project-title-row">
-              <div class="project-icon-box">
-                <img src="./assets/browser.png" alt="bytecode.my.id" width="22" height="22" />
-              </div>
-              <h3 class="project-name">bytecode.my.id</h3>
-            </div>
-
-            <p class="project-desc">
-              Core domain and web gateway for personal APIs, digital services, and project hosting with custom routing
-              and high-availability endpoints.
-            </p>
-
-            <div class="project-tags">
-              <span class="tag-item">Domain</span>
-              <span class="tag-item">Cloudflare</span>
-              <span class="tag-item">API Gateway</span>
-              <span class="tag-item">Web Services</span>
-            </div>
-          </div>
-
-          <div class="project-card-footer">
-            <a href="https://bytecode.my.id" target="_blank" rel="noopener noreferrer" class="project-action-link">
-              <span>Visit Domain</span>
-              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M7 17L17 7M17 7H7M17 7V17" />
-              </svg>
-            </a>
-            <button type="button" class="project-copy-link" data-copy="https://bytecode.my.id" title="Copy Domain URL">
-              Copy URL
-            </button>
-          </div>
-        </article>
-
-        <!-- Project 3: Naell Linktree -->
-        <article class="project-glass-card">
-          <div class="project-card-header">
-            <div class="project-badge">WEB APPLICATION</div>
-            <span class="project-year">Production</span>
-          </div>
-
-          <div class="project-content">
-            <div class="project-title-row">
-              <div class="project-icon-box">
-                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
-                  <circle cx="12" cy="12" r="10" />
-                  <line x1="2" y1="12" x2="22" y2="12" />
-                  <path
-                    d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-                </svg>
-              </div>
-              <h3 class="project-name">Naell Linktree Experience</h3>
-            </div>
-
-            <p class="project-desc">
-              High-performance mobile-first bio link application featuring custom hardware-synchronized dual-video
-              backgrounds and iOS frosted glass buttons.
-            </p>
-
-            <div class="project-tags">
-              <span class="tag-item">React 18</span>
-              <span class="tag-item">Vite 6</span>
-              <span class="tag-item">iOS Glass</span>
-              <span class="tag-item">HTML5 Media</span>
-            </div>
-          </div>
-
-          <div class="project-card-footer">
-            <a href="https://naells.github.io/naells/" target="_blank" rel="noopener noreferrer"
-              class="project-action-link">
-              <span>Live Preview</span>
-              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M7 17L17 7M17 7H7M17 7V17" />
-              </svg>
-            </a>
-            <a href="https://github.com/naells/naells" target="_blank" rel="noopener noreferrer"
-              class="project-copy-link">
-              Repository
-            </a>
-          </div>
-        </article>
-
-        <!-- Project 4: Automation & Bot Suites -->
-        <article class="project-glass-card">
-          <div class="project-card-header">
-            <div class="project-badge">SERVICES & BOTS</div>
-            <span class="project-year">Continuous</span>
-          </div>
-
-          <div class="project-content">
-            <div class="project-title-row">
-              <div class="project-icon-box">
-                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
-                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
-                  <line x1="8" y1="21" x2="16" y2="21" />
-                  <line x1="12" y1="17" x2="12" y2="21" />
-                </svg>
-              </div>
-              <h3 class="project-name">Stealth Bot Automation</h3>
-            </div>
-
-            <p class="project-desc">
-              Tailored bot microservices managing user verification, role synchronizations, anti-raid mechanisms, and
-              automatic event monitoring across servers.
-            </p>
-
-            <div class="project-tags">
-              <span class="tag-item">Node.js</span>
-              <span class="tag-item">Discord.js</span>
-              <span class="tag-item">Async Queues</span>
-              <span class="tag-item">REST</span>
-            </div>
-          </div>
-
-          <div class="project-card-footer">
-            <a href="https://github.com/naells" target="_blank" rel="noopener noreferrer" class="project-action-link">
-              <span>View on GitHub</span>
-              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M7 17L17 7M17 7H7M17 7V17" />
-              </svg>
-            </a>
-            <span class="project-status-text">Production</span>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- SKILLS & TECH STACK -->
-    <section id="skills" class="section-container">
-      <div class="section-header">
-        <span class="section-label">TECH STACK</span>
-        <h2 class="section-title">Tools, Technologies & Environments</h2>
-        <p class="section-desc">Technologies powering my daily workflows and development pipeline.</p>
-      </div>
-
-      <div class="skills-categories-grid">
-        <!-- Category 1 -->
-        <div class="skill-category-card">
-          <h3 class="category-heading">Frontend & UI</h3>
-          <div class="skills-pills-wrap">
-            <span class="skill-glass-pill">JavaScript (ES6+)</span>
-            <span class="skill-glass-pill">TypeScript</span>
-            <span class="skill-glass-pill">React</span>
-            <span class="skill-glass-pill">HTML5 & Semantic Web</span>
-            <span class="skill-glass-pill">CSS3 & Glassmorphism</span>
-            <span class="skill-glass-pill">Responsive Design</span>
-          </div>
-        </div>
-
-        <!-- Category 2 -->
-        <div class="skill-category-card">
-          <h3 class="category-heading">Backend & APIs</h3>
-          <div class="skills-pills-wrap">
-            <span class="skill-glass-pill">Node.js</span>
-            <span class="skill-glass-pill">Express</span>
-            <span class="skill-glass-pill">RESTful APIs</span>
-            <span class="skill-glass-pill">Discord API</span>
-            <span class="skill-glass-pill">Webhooks</span>
-            <span class="skill-glass-pill">JSON Data Flow</span>
-          </div>
-        </div>
-
-        <!-- Category 3 -->
-        <div class="skill-category-card">
-          <h3 class="category-heading">Tooling & Platforms</h3>
-          <div class="skills-pills-wrap">
-            <span class="skill-glass-pill">Vite</span>
-            <span class="skill-glass-pill">Git & GitHub</span>
-            <span class="skill-glass-pill">GitHub Pages / Actions</span>
-            <span class="skill-glass-pill">Cloudflare DNS</span>
-            <span class="skill-glass-pill">Windows / PowerShell</span>
-            <span class="skill-glass-pill">Linux Shell</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT & SOCIALS -->
-    <section id="contact" class="section-container">
-      <div class="section-header">
-        <span class="section-label">CONNECT</span>
-        <h2 class="section-title">Connect with Naell</h2>
-        <p class="section-desc">Join the community, check out code repositories, or follow along on social platforms.
-        </p>
-      </div>
-
-      <div class="contact-cards-grid">
-        <!-- Discord -->
-        <div class="contact-glass-card" data-link="https://discord.gg/stealth-x-1426911756424319089">
-          <div class="contact-card-icon-wrap">
-            <img src="./assets/discord.svg" alt="Discord" width="26" height="26" />
-          </div>
-          <div class="contact-card-info">
-            <span class="contact-card-title">Discord Community</span>
-            <span class="contact-card-subtitle">Stealth-X Collective</span>
-          </div>
-          <button type="button" class="contact-action-btn" data-copy="https://discord.gg/stealth-x-1426911756424319089"
-            aria-label="Copy Discord link">
-            Copy
           </button>
+        </header>
+
+        <!-- Profile Header -->
+        <div class="profile-header">
+          <div class="avatar-wrapper">
+            <img src="./assets/avatar.jpeg" alt="Naell" class="header-avatar" />
+          </div>
+
+          <div class="profile-title-container">
+            <div class="profile-title-row">
+              <h1 class="profile-name">Naell</h1>
+              <img src="./assets/764230-verified.gif" alt="Verified" class="verified-badge-gif" />
+            </div>
+            <p class="profile-username">@bytecodev</p>
+          </div>
+
+          <p class="profile-bio">
+            Full-Stack Developer & Founder of <a href="https://discord.gg/stealth-x-1426911756424319089" target="_blank" rel="noopener noreferrer" class="bio-link">Stealth-X</a>.
+          </p>
         </div>
 
-        <!-- GitHub -->
-        <div class="contact-glass-card" data-link="https://github.com/naells">
-          <div class="contact-card-icon-wrap">
-            <img src="./assets/github.svg" alt="GitHub" width="26" height="26" />
-          </div>
-          <div class="contact-card-info">
-            <span class="contact-card-title">GitHub Profile</span>
-            <span class="contact-card-subtitle">@naells</span>
-          </div>
-          <a href="https://github.com/naells" target="_blank" rel="noopener noreferrer" class="contact-action-btn"
-            aria-label="Open GitHub profile">
-            Visit
-          </a>
-        </div>
+        <!-- Section Navigation Pills (Tabs) -->
+        <nav class="portfolio-nav-tabs" aria-label="Portfolio sections">
+          <button type="button" class="nav-tab-btn active" data-tab="projects">Projects</button>
+          <button type="button" class="nav-tab-btn" data-tab="skills">Tech Stack</button>
+          <button type="button" class="nav-tab-btn" data-tab="connect">Connect</button>
+        </nav>
 
-        <!-- Website -->
-        <div class="contact-glass-card" data-link="https://bytecode.my.id">
-          <div class="contact-card-icon-wrap">
-            <img src="./assets/browser.png" alt="Website" width="26" height="26" />
-          </div>
-          <div class="contact-card-info">
-            <span class="contact-card-title">Personal Domain</span>
-            <span class="contact-card-subtitle">bytecode.my.id</span>
-          </div>
-          <a href="https://bytecode.my.id" target="_blank" rel="noopener noreferrer" class="contact-action-btn"
-            aria-label="Visit bytecode.my.id">
-            Visit
-          </a>
-        </div>
+        <!-- Content Area -->
+        <main class="portfolio-content">
+          <!-- PROJECTS TAB -->
+          <section id="tab-projects" class="tab-panel active">
+            <div class="cards-stack">
+              <!-- Stealth-X -->
+              <a
+                href="https://discord.gg/stealth-x-1426911756424319089"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="glass-pill-card project-card"
+              >
+                <div class="card-icon-col">
+                  <img src="./assets/discord.svg" alt="Stealth-X" class="pill-icon-img" />
+                </div>
+                <div class="card-text-col">
+                  <div class="card-headline">
+                    <span class="card-title">Stealth-X</span>
+                    <span class="card-badge">Founder</span>
+                  </div>
+                  <span class="card-subtitle">Developer community & digital underground tools</span>
+                </div>
+                <div class="card-action-col">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M7 17L17 7M17 7H7M17 7V17" />
+                  </svg>
+                </div>
+              </a>
 
-        <!-- TikTok -->
-        <div class="contact-glass-card" data-link="https://www.tiktok.com/@bytecodev">
-          <div class="contact-card-icon-wrap">
-            <img src="./assets/tik-tok.png" alt="TikTok" width="26" height="26" />
-          </div>
-          <div class="contact-card-info">
-            <span class="contact-card-title">TikTok</span>
-            <span class="contact-card-subtitle">@bytecodev</span>
-          </div>
-          <a href="https://www.tiktok.com/@bytecodev" target="_blank" rel="noopener noreferrer"
-            class="contact-action-btn" aria-label="Visit TikTok profile">
-            Visit
-          </a>
-        </div>
+              <!-- bytecode.my.id -->
+              <a
+                href="https://bytecode.my.id"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="glass-pill-card project-card"
+              >
+                <div class="card-icon-col">
+                  <img src="./assets/browser.png" alt="Website" class="pill-icon-img" />
+                </div>
+                <div class="card-text-col">
+                  <div class="card-headline">
+                    <span class="card-title">bytecode.my.id</span>
+                    <span class="card-badge">Platform</span>
+                  </div>
+                  <span class="card-subtitle">Personal engineering platform & API services</span>
+                </div>
+                <div class="card-action-col">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M7 17L17 7M17 7H7M17 7V17" />
+                  </svg>
+                </div>
+              </a>
+
+              <!-- Naell Linktree -->
+              <a
+                href="https://naells.github.io/naells/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="glass-pill-card project-card"
+              >
+                <div class="card-icon-col">
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10" />
+                    <line x1="2" y1="12" x2="22" y2="12" />
+                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                  </svg>
+                </div>
+                <div class="card-text-col">
+                  <div class="card-headline">
+                    <span class="card-title">Naell Linktree</span>
+                    <span class="card-badge">Web App</span>
+                  </div>
+                  <span class="card-subtitle">Dual-video dynamic background & iOS glass UI</span>
+                </div>
+                <div class="card-action-col">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M7 17L17 7M17 7H7M17 7V17" />
+                  </svg>
+                </div>
+              </a>
+
+              <!-- Stealth Bot Automation -->
+              <a
+                href="https://github.com/naells"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="glass-pill-card project-card"
+              >
+                <div class="card-icon-col">
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+                    <line x1="8" y1="21" x2="16" y2="21" />
+                    <line x1="12" y1="17" x2="12" y2="21" />
+                  </svg>
+                </div>
+                <div class="card-text-col">
+                  <div class="card-headline">
+                    <span class="card-title">Stealth Automation</span>
+                    <span class="card-badge">Systems</span>
+                  </div>
+                  <span class="card-subtitle">Discord moderation & event-driven webhook bots</span>
+                </div>
+                <div class="card-action-col">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M7 17L17 7M17 7H7M17 7V17" />
+                  </svg>
+                </div>
+              </a>
+            </div>
+          </section>
+
+          <!-- TECH STACK TAB -->
+          <section id="tab-skills" class="tab-panel">
+            <div class="stack-groups">
+              <div class="stack-group">
+                <span class="stack-group-title">Frontend</span>
+                <div class="skills-wrap">
+                  <span class="glass-pill-tag">JavaScript (ES6+)</span>
+                  <span class="glass-pill-tag">TypeScript</span>
+                  <span class="glass-pill-tag">React</span>
+                  <span class="glass-pill-tag">HTML5 / CSS3</span>
+                  <span class="glass-pill-tag">TailwindCSS</span>
+                </div>
+              </div>
+
+              <div class="stack-group">
+                <span class="stack-group-title">Backend & Systems</span>
+                <div class="skills-wrap">
+                  <span class="glass-pill-tag">Node.js</span>
+                  <span class="glass-pill-tag">Express</span>
+                  <span class="glass-pill-tag">REST APIs</span>
+                  <span class="glass-pill-tag">Webhooks</span>
+                  <span class="glass-pill-tag">Discord API</span>
+                  <span class="glass-pill-tag">Python</span>
+                </div>
+              </div>
+
+              <div class="stack-group">
+                <span class="stack-group-title">Tooling</span>
+                <div class="skills-wrap">
+                  <span class="glass-pill-tag">Vite</span>
+                  <span class="glass-pill-tag">Git & GitHub</span>
+                  <span class="glass-pill-tag">Cloudflare</span>
+                  <span class="glass-pill-tag">Docker</span>
+                  <span class="glass-pill-tag">PowerShell / Linux</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- CONNECT TAB -->
+          <section id="tab-connect" class="tab-panel">
+            <div class="cards-stack">
+              <!-- GitHub -->
+              <a
+                href="https://github.com/naells"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="glass-pill-card"
+              >
+                <div class="card-icon-col">
+                  <img src="./assets/github.svg" alt="GitHub" class="pill-icon-img" />
+                </div>
+                <div class="card-text-col">
+                  <span class="card-title">GitHub</span>
+                  <span class="card-subtitle">@naells</span>
+                </div>
+                <div class="card-action-col">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M7 17L17 7M17 7H7M17 7V17" />
+                  </svg>
+                </div>
+              </a>
+
+              <!-- Discord -->
+              <a
+                href="https://discord.gg/stealth-x-1426911756424319089"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="glass-pill-card"
+              >
+                <div class="card-icon-col">
+                  <img src="./assets/discord.svg" alt="Discord" class="pill-icon-img" />
+                </div>
+                <div class="card-text-col">
+                  <span class="card-title">Discord (Stealth-X)</span>
+                  <span class="card-subtitle">discord.gg/stealth-x</span>
+                </div>
+                <div class="card-action-col">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M7 17L17 7M17 7H7M17 7V17" />
+                  </svg>
+                </div>
+              </a>
+
+              <!-- Website -->
+              <a
+                href="https://bytecode.my.id"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="glass-pill-card"
+              >
+                <div class="card-icon-col">
+                  <img src="./assets/browser.png" alt="Website" class="pill-icon-img" />
+                </div>
+                <div class="card-text-col">
+                  <span class="card-title">Website</span>
+                  <span class="card-subtitle">bytecode.my.id</span>
+                </div>
+                <div class="card-action-col">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M7 17L17 7M17 7H7M17 7V17" />
+                  </svg>
+                </div>
+              </a>
+
+              <!-- TikTok -->
+              <a
+                href="https://www.tiktok.com/@bytecodev"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="glass-pill-card"
+              >
+                <div class="card-icon-col">
+                  <img src="./assets/tik-tok.png" alt="TikTok" class="pill-icon-img" />
+                </div>
+                <div class="card-text-col">
+                  <span class="card-title">TikTok</span>
+                  <span class="card-subtitle">@bytecodev</span>
+                </div>
+                <div class="card-action-col">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M7 17L17 7M17 7H7M17 7V17" />
+                  </svg>
+                </div>
+              </a>
+            </div>
+          </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="portfolio-footer">
+          <p class="footer-text">© 2026 Naell • Stealth-X</p>
+        </footer>
       </div>
-    </section>
+    </div>
 
-    <!-- FOOTER -->
-    <footer class="footer-glass-card">
-      <div class="footer-left">
-        <p class="footer-text">© 2026 <strong>Naell</strong>. Crafted with iOS Glass Aesthetics.</p>
-      </div>
-      <div class="footer-right">
-        <a href="#hero" class="back-to-top-btn" aria-label="Back to Top">
-          <span>Back to top</span>
-          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5">
-            <path d="M18 15l-6-6-6 6" />
-          </svg>
-        </a>
-      </div>
-    </footer>
-  </div>
+    <!-- Toast Notification -->
+    <div id="toast" class="toast-popup" role="status" aria-live="polite">
+      <span id="toast-message">Link copied</span>
+    </div>
 
-  <!-- Toast Notification -->
-  <div id="toast" class="toast-popup" role="status" aria-live="polite">
-    <span id="toast-message">Copied to clipboard</span>
-  </div>
-
-  <!-- Client Script -->
-  <script src="./script.js"></script>
-</body>
-
+    <script src="./script.js"></script>
+  </body>
 </html>

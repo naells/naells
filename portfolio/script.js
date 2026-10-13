@@ -1,8 +1,8 @@
 /**
  * NAELL PORTFOLIO CLIENT LOGIC
  * - Hardware-synchronized Dual Video Playback (Opening -> Loop onPlaying)
- * - One-click Copy & Toast notifications
- * - Active Navigation Scroll Tracking
+ * - Segmented Tab Switcher (Projects, Tech Stack, Connect)
+ * - Native Web Share / Copy Toast Notification
  */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -17,7 +17,6 @@ document.addEventListener("DOMContentLoaded", () => {
     loopVideo.defaultMuted = true;
     loopVideo.muted = true;
 
-    // Show opening video once first frame is ready
     const handleOpeningReady = () => {
       openingVideo.classList.add("is-loaded");
     };
@@ -38,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     };
 
-    // When opening approaches ~40ms before end, trigger loop play
+    // When opening reaches ~40ms before end, trigger loop play
     openingVideo.addEventListener("timeupdate", () => {
       if (!transitionStarted && openingVideo.duration > 0) {
         if (openingVideo.currentTime >= Math.max(0, openingVideo.duration - 0.04)) {
@@ -50,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
     openingVideo.addEventListener("ended", triggerLoopTransition);
     openingVideo.addEventListener("error", triggerLoopTransition);
 
-    // Instant seamless cut the exact moment loop outputs running decoded frames
+    // Instant seamless cut the exact moment loop outputs decoded frames
     loopVideo.addEventListener("playing", () => {
       loopVideo.classList.add("is-active");
       openingVideo.classList.add("is-hidden");
@@ -63,9 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Start opening video
     const startPlay = openingVideo.play();
     if (startPlay !== undefined) {
-      startPlay.catch(() => {
-        // Fallback if browser requires interaction
-      });
+      startPlay.catch(() => {});
     }
   }
 
@@ -82,60 +79,49 @@ document.addEventListener("DOMContentLoaded", () => {
     if (toastTimer) clearTimeout(toastTimer);
     toastTimer = setTimeout(() => {
       toast.classList.remove("visible");
-    }, 2200);
+    }, 2000);
   };
 
-  // Copy buttons
-  document.querySelectorAll("[data-copy]").forEach((el) => {
-    el.addEventListener("click", (e) => {
-      e.stopPropagation();
-      e.preventDefault();
-      const val = el.getAttribute("data-copy");
-      if (val) {
-        navigator.clipboard.writeText(val).then(() => {
-          showToast(`Copied: ${val}`);
-        }).catch(() => {
-          showToast("Copied to clipboard");
-        });
+  // 3. Tab Switcher
+  const tabButtons = document.querySelectorAll(".nav-tab-btn");
+  const tabPanels = document.querySelectorAll(".tab-panel");
+
+  tabButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const targetTab = btn.getAttribute("data-tab");
+
+      tabButtons.forEach((b) => b.classList.remove("active"));
+      tabPanels.forEach((p) => p.classList.remove("active"));
+
+      btn.classList.add("active");
+      const targetPanel = document.getElementById(`tab-${targetTab}`);
+      if (targetPanel) {
+        targetPanel.classList.add("active");
       }
     });
   });
 
-  // Contact cards direct click navigation
-  document.querySelectorAll(".contact-glass-card[data-link]").forEach((card) => {
-    card.addEventListener("click", (e) => {
-      // Don't trigger if user clicked a button inside
-      if (e.target.closest("button") || e.target.closest("a")) return;
-      const url = card.getAttribute("data-link");
-      if (url) {
-        window.open(url, "_blank", "noopener,noreferrer");
-      }
-    });
-  });
-
-  // 3. Scroll Active Link Tracking
-  const sections = document.querySelectorAll("section[id]");
-  const navLinks = document.querySelectorAll(".nav-link");
-
-  const updateActiveNav = () => {
-    const scrollY = window.scrollY;
-
-    sections.forEach((current) => {
-      const sectionHeight = current.offsetHeight;
-      const sectionTop = current.offsetTop - 140;
-      const sectionId = current.getAttribute("id");
-
-      if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
-        navLinks.forEach((link) => {
-          link.classList.remove("active");
-          if (link.getAttribute("href") === `#${sectionId}`) {
-            link.classList.add("active");
+  // 4. Share Button
+  const shareBtn = document.getElementById("share-btn");
+  if (shareBtn) {
+    shareBtn.addEventListener("click", async () => {
+      const shareUrl = window.location.href;
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: "Naell — Portfolio",
+            url: shareUrl,
+          });
+        } catch (err) {
+          if (err.name !== "AbortError") {
+            navigator.clipboard.writeText(shareUrl);
+            showToast("Link copied");
           }
-        });
+        }
+      } else {
+        navigator.clipboard.writeText(shareUrl);
+        showToast("Link copied");
       }
     });
-  };
-
-  window.addEventListener("scroll", updateActiveNav, { passive: true });
-  updateActiveNav();
+  }
 });
