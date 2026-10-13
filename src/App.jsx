@@ -17,6 +17,7 @@ function App() {
   const openingRef = useRef(null);
   const loopRef = useRef(null);
   const hasEndedRef = useRef(false);
+  const hasPreRolledRef = useRef(false);
 
   useEffect(() => {
     document.body.setAttribute("data-theme", "dark");
@@ -32,15 +33,10 @@ function App() {
     }
   }, []);
 
-  const handleOpeningEnded = () => {
-    if (hasEndedRef.current) return;
-    hasEndedRef.current = true;
-    setIsOpeningEnded(true);
-
+  const startLoopPlayback = () => {
     if (loopRef.current) {
       loopRef.current.defaultMuted = true;
       loopRef.current.muted = true;
-      loopRef.current.currentTime = 0;
       const playPromise = loopRef.current.play();
       if (playPromise !== undefined) {
         playPromise.catch(() => {});
@@ -48,10 +44,27 @@ function App() {
     }
   };
 
+  const handleOpeningEnded = () => {
+    if (hasEndedRef.current) return;
+    hasEndedRef.current = true;
+    setIsOpeningEnded(true);
+    startLoopPlayback();
+  };
+
   const handleOpeningTimeUpdate = () => {
     const el = openingRef.current;
-    if (el && el.duration && el.duration > 0) {
-      if (el.currentTime >= el.duration - 0.08) {
+    if (!el) return;
+
+    const duration = el.duration;
+    if (duration && duration > 0) {
+      // 1. Majukan pemutaran video loop ~0.45s sebelum opening berakhir agar frame sudah aktif
+      if (!hasPreRolledRef.current && el.currentTime >= Math.max(0, duration - 0.45)) {
+        hasPreRolledRef.current = true;
+        startLoopPlayback();
+      }
+
+      // 2. Majukan titik pergantian ~0.20s lebih awal agar langsung melanjutkan tanpa jeda frame akhir
+      if (!hasEndedRef.current && el.currentTime >= Math.max(0, duration - 0.20)) {
         handleOpeningEnded();
       }
     }
@@ -103,11 +116,24 @@ function App() {
   return (
     <div className="app-layout" data-theme="dark">
       <div className="video-bg-container" aria-hidden="true">
-        {/* Opening video: diputar saat website dibuka / refresh */}
+        {/* Loop video: berada di layer bawah (z-index: 1), sudah running sebelum opening selesai */}
+        <video
+          ref={loopRef}
+          className={`background-video loop-video ${loopReady ? "is-loaded" : ""}`}
+          src={loopVideo}
+          muted
+          playsInline
+          loop
+          preload="auto"
+          onLoadedData={() => setLoopReady(true)}
+          onCanPlay={() => setLoopReady(true)}
+        />
+
+        {/* Opening video: berada di layer atas (z-index: 2), fade-out mulus ke video loop tanpa jeda hitam */}
         <video
           ref={openingRef}
-          className={`background-video ${openingReady ? "is-loaded" : ""} ${
-            isOpeningEnded ? "is-hidden" : "is-active"
+          className={`background-video opening-video ${openingReady ? "is-loaded" : ""} ${
+            isOpeningEnded ? "is-ended" : ""
           }`}
           src={openingVideo}
           autoPlay
@@ -119,21 +145,6 @@ function App() {
           onEnded={handleOpeningEnded}
           onTimeUpdate={handleOpeningTimeUpdate}
           onError={handleOpeningEnded}
-        />
-
-        {/* Loop video: langsung lanjut & looping setelah opening selesai */}
-        <video
-          ref={loopRef}
-          className={`background-video ${loopReady ? "is-loaded" : ""} ${
-            isOpeningEnded ? "is-active" : "is-preload"
-          }`}
-          src={loopVideo}
-          muted
-          playsInline
-          loop
-          preload="auto"
-          onLoadedData={() => setLoopReady(true)}
-          onCanPlay={() => setLoopReady(true)}
         />
         <div className="video-overlay" />
       </div>

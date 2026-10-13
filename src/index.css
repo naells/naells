@@ -94,28 +94,30 @@ html, body {
   will-change: opacity, transform;
   background-color: #000000;
   opacity: 0;
-  transition: opacity 0.4s ease-in-out;
 }
 
-.background-video.is-loaded.is-active {
+/* Loop video: runs underneath at z-index 1 */
+.background-video.loop-video {
+  z-index: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.background-video.loop-video.is-loaded {
   opacity: 1;
+}
+
+/* Opening video: on top at z-index 2 */
+.background-video.opening-video {
   z-index: 2;
+  transition: opacity 0.2s ease-out;
 }
 
-.background-video.is-loaded.is-underneath {
+.background-video.opening-video.is-loaded {
   opacity: 1;
-  z-index: 1;
 }
 
-.background-video.is-hidden {
+.background-video.opening-video.is-ended {
   opacity: 0;
-  z-index: 0;
-  pointer-events: none;
-}
-
-.background-video.is-preload {
-  opacity: 0;
-  z-index: 1;
   pointer-events: none;
 }
 
