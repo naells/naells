@@ -96,26 +96,9 @@ html, body {
   opacity: 0;
 }
 
-/* Loop video: Strictly hidden with 0 opacity during initial load/refresh until opening finishes */
-.background-video.loop-video {
-  z-index: 1;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.25s ease-in-out;
-}
-
-.background-video.loop-video.is-active {
-  opacity: 1;
-}
-
-.background-video.loop-video.is-hidden {
-  opacity: 0;
-  pointer-events: none;
-}
-
-/* Opening video: on top at z-index 2 */
+/* Opening video: Layer 1, starts at opacity 0 on black, fades in smoothly when ready */
 .background-video.opening-video {
-  z-index: 2;
+  z-index: 1;
   opacity: 0;
   transition: opacity 0.25s ease-out;
 }
@@ -124,9 +107,21 @@ html, body {
   opacity: 1;
 }
 
-.background-video.opening-video.is-ended {
+.background-video.opening-video.is-hidden {
   opacity: 0;
   pointer-events: none;
+}
+
+/* Loop video: Layer 2 (on top). Strictly 0 opacity until decoded & playing.
+   Instantly takes over on top of the last frame of opening with zero flicker or black dip */
+.background-video.loop-video {
+  z-index: 2;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.background-video.loop-video.is-active {
+  opacity: 1;
 }
 
 .video-overlay {

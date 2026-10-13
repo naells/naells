@@ -10,14 +10,12 @@ import loopVideo from "./assets/loop.mp4";
 function App() {
   const [toastMessage, setToastMessage] = useState("");
   const [toastVisible, setToastVisible] = useState(false);
-  const [isOpeningEnded, setIsOpeningEnded] = useState(false);
+  const [isLoopActive, setIsLoopActive] = useState(false);
   const [openingReady, setOpeningReady] = useState(false);
-  const [loopReady, setLoopReady] = useState(false);
 
   const openingRef = useRef(null);
   const loopRef = useRef(null);
-  const hasEndedRef = useRef(false);
-  const hasPreRolledRef = useRef(false);
+  const transitionTriggeredRef = useRef(false);
 
   useEffect(() => {
     document.body.setAttribute("data-theme", "dark");
@@ -33,22 +31,19 @@ function App() {
     }
   }, []);
 
-  const startLoopPlayback = () => {
+  const triggerLoopStart = () => {
+    if (transitionTriggeredRef.current) return;
+    transitionTriggeredRef.current = true;
+
     if (loopRef.current) {
       loopRef.current.defaultMuted = true;
       loopRef.current.muted = true;
+      loopRef.current.currentTime = 0;
       const playPromise = loopRef.current.play();
       if (playPromise !== undefined) {
         playPromise.catch(() => {});
       }
     }
-  };
-
-  const handleOpeningEnded = () => {
-    if (hasEndedRef.current) return;
-    hasEndedRef.current = true;
-    setIsOpeningEnded(true);
-    startLoopPlayback();
   };
 
   const handleOpeningTimeUpdate = () => {
@@ -57,29 +52,23 @@ function App() {
 
     const duration = el.duration;
     if (duration && duration > 0) {
-      // 1. Majukan pemutaran video loop ~0.45s sebelum opening berakhir agar frame sudah aktif
-      if (!hasPreRolledRef.current && el.currentTime >= Math.max(0, duration - 0.45)) {
-        hasPreRolledRef.current = true;
-        startLoopPlayback();
-      }
-
-      // 2. Majukan titik pergantian ~0.20s lebih awal agar langsung melanjutkan tanpa jeda frame akhir
-      if (!hasEndedRef.current && el.currentTime >= Math.max(0, duration - 0.20)) {
-        handleOpeningEnded();
+      // Saat opening mencapai ~40ms sebelum akhir, mulai play loop
+      if (!transitionTriggeredRef.current && el.currentTime >= Math.max(0, duration - 0.04)) {
+        triggerLoopStart();
       }
     }
   };
 
-  useEffect(() => {
-    if (isOpeningEnded && openingRef.current) {
-      const timer = setTimeout(() => {
-        if (openingRef.current) {
-          openingRef.current.pause();
-        }
-      }, 500);
-      return () => clearTimeout(timer);
-    }
-  }, [isOpeningEnded]);
+  const handleLoopPlaying = () => {
+    // Dipicu saat loop video sudah benar-benar merender frame pertama secara aktif
+    setIsLoopActive(true);
+
+    setTimeout(() => {
+      if (openingRef.current) {
+        openingRef.current.pause();
+      }
+    }, 150);
+  };
 
   const showToast = (message) => {
     setToastMessage(message);
@@ -116,26 +105,11 @@ function App() {
   return (
     <div className="app-layout" data-theme="dark">
       <div className="video-bg-container" aria-hidden="true">
-        {/* Loop video: berada di layer bawah (z-index: 1), strictly hidden (opacity: 0) sampai opening selesai */}
-        <video
-          ref={loopRef}
-          className={`background-video loop-video ${
-            isOpeningEnded && loopReady ? "is-active" : "is-hidden"
-          }`}
-          src={loopVideo}
-          muted
-          playsInline
-          loop
-          preload="auto"
-          onLoadedData={() => setLoopReady(true)}
-          onCanPlay={() => setLoopReady(true)}
-        />
-
-        {/* Opening video: berada di layer atas (z-index: 2), fade-out mulus ke video loop tanpa jeda hitam */}
+        {/* Opening video: Layer 1, diputar di awal di atas background hitam */}
         <video
           ref={openingRef}
           className={`background-video opening-video ${openingReady ? "is-loaded" : ""} ${
-            isOpeningEnded ? "is-ended" : ""
+            isLoopActive ? "is-hidden" : ""
           }`}
           src={openingVideo}
           autoPlay
@@ -144,9 +118,21 @@ function App() {
           preload="auto"
           onLoadedData={() => setOpeningReady(true)}
           onCanPlay={() => setOpeningReady(true)}
-          onEnded={handleOpeningEnded}
+          onEnded={triggerLoopStart}
           onTimeUpdate={handleOpeningTimeUpdate}
-          onError={handleOpeningEnded}
+          onError={triggerLoopStart}
+        />
+
+        {/* Loop video: Layer 2 (on top), strictly 0 opacity sampai onPlaying dipicu */}
+        <video
+          ref={loopRef}
+          className={`background-video loop-video ${isLoopActive ? "is-active" : ""}`}
+          src={loopVideo}
+          muted
+          playsInline
+          loop
+          preload="auto"
+          onPlaying={handleLoopPlaying}
         />
         <div className="video-overlay" />
       </div>
