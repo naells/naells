@@ -116,10 +116,12 @@ function App() {
   return (
     <div className="app-layout" data-theme="dark">
       <div className="video-bg-container" aria-hidden="true">
-        {/* Loop video: berada di layer bawah (z-index: 1), sudah running sebelum opening selesai */}
+        {/* Loop video: berada di layer bawah (z-index: 1), strictly hidden (opacity: 0) sampai opening selesai */}
         <video
           ref={loopRef}
-          className={`background-video loop-video ${loopReady ? "is-loaded" : ""}`}
+          className={`background-video loop-video ${
+            isOpeningEnded && loopReady ? "is-active" : "is-hidden"
+          }`}
           src={loopVideo}
           muted
           playsInline

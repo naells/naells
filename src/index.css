@@ -96,20 +96,28 @@ html, body {
   opacity: 0;
 }
 
-/* Loop video: runs underneath at z-index 1 */
+/* Loop video: Strictly hidden with 0 opacity during initial load/refresh until opening finishes */
 .background-video.loop-video {
   z-index: 1;
-  transition: opacity 0.3s ease-in-out;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease-in-out;
 }
 
-.background-video.loop-video.is-loaded {
+.background-video.loop-video.is-active {
   opacity: 1;
+}
+
+.background-video.loop-video.is-hidden {
+  opacity: 0;
+  pointer-events: none;
 }
 
 /* Opening video: on top at z-index 2 */
 .background-video.opening-video {
   z-index: 2;
-  transition: opacity 0.2s ease-out;
+  opacity: 0;
+  transition: opacity 0.25s ease-out;
 }
 
 .background-video.opening-video.is-loaded {
