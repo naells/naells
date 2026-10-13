@@ -77,6 +77,7 @@ html, body {
   overflow: hidden;
   z-index: 0;
   pointer-events: none;
+  background-color: #000000;
 }
 
 .background-video {
@@ -90,7 +91,32 @@ html, body {
   transform: translate(-50%, -50%) translateZ(0);
   object-fit: cover;
   object-position: right center;
-  will-change: transform;
+  will-change: opacity, transform;
+  background-color: #000000;
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.background-video.is-loaded.is-active {
+  opacity: 1;
+  z-index: 2;
+}
+
+.background-video.is-loaded.is-underneath {
+  opacity: 1;
+  z-index: 1;
+}
+
+.background-video.is-hidden {
+  opacity: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.background-video.is-preload {
+  opacity: 0;
+  z-index: 1;
+  pointer-events: none;
 }
 
 .video-overlay {
@@ -101,6 +127,7 @@ html, body {
   height: 100%;
   background: var(--video-overlay);
   transition: background 0.3s ease;
+  z-index: 3;
 }
 
 /* App Layout - Full viewport frame */
